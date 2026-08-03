@@ -1,3 +1,4 @@
 {
-  "template": "node"
+  "source": "github",
+  "workflow": "scrape.yml"
 }
