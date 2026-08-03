@@ -4,6 +4,17 @@
   "files": [
     {
       "brand": "Vivo",
+      "deviceName": "Vivo Y05e PD2577F Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://vivofirmware.com/vivo-y05e-pd2577f",
+      "googleDriveUrl": "https://drive.google.com/file/d/1uVJqjaxBI-wH2-YmVV9Hex1Tl7Mz603F/view?usp=drive_link",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1uVJqjaxBI-wH2-YmVV9Hex1Tl7Mz603F&export=download&confirm=t",
+      "fileSize": "10.84 GB",
+      "date": "2026-08-03",
+      "firmwareVersion": "16.0.8.15.W30.V000L1",
+      "description": "Download the official Vivo Y05e PD2577F Stock Firmware (Flash File) for your Vivo Smartphone. We also provide Stock ROM for other Vivo devices."
+    },
+    {
+      "brand": "Vivo",
       "deviceName": "Vivo S30 PD2464 Stock Firmware ROM (Flash File)",
       "deviceUrl": "https://vivofirmware.com/vivo-s30-pd2464",
       "googleDriveUrl": "https://drive.google.com/file/d/1E7KogqEihgwiS5V4LNEjgbVEfsOVwgER/view?usp=sharing",
@@ -254,17 +265,6 @@
       "date": "2026-02-20",
       "firmwareVersion": "16.0.11.1.W30.V000L1",
       "description": "Download the official Vivo V70 FE PD2539F Stock Firmware (Flash File) for your Vivo Smartphone. We also provide Stock ROM for other Vivo devices."
-    },
-    {
-      "brand": "Vivo",
-      "deviceName": "Vivo V70 Lite 5G PD2539F Stock Firmware ROM (Flash File)",
-      "deviceUrl": "https://vivofirmware.com/vivo-v70-lite-5g-pd2539f",
-      "googleDriveUrl": "https://drive.google.com/file/d/1EgoY6yKqcugrj5iJLOoCOqoaa3b4dybB/view?usp=sharing",
-      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1EgoY6yKqcugrj5iJLOoCOqoaa3b4dybB&export=download&confirm=t",
-      "fileSize": "16.10 GB",
-      "date": "2026-02-20",
-      "firmwareVersion": "16.0.11.1.W30.V000L1",
-      "description": "Download the official Vivo V70 Lite 5G PD2539F Stock Firmware (Flash File) for your Vivo Smartphone. We also provide Stock ROM for other Vivo devices."
     }
   ]
 }

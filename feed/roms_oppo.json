@@ -4,6 +4,17 @@
   "files": [
     {
       "brand": "Oppo",
+      "deviceName": "Oppo A5 Pro 5G CPH2711 Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://oppostockrom.com/oppo-a5-pro-5g-cph2711",
+      "googleDriveUrl": "https://drive.google.com/file/d/10blJpVzUTHk5T4VUw6WVQuUVXxB1WKkN/view?usp=sharing",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=10blJpVzUTHk5T4VUw6WVQuUVXxB1WKkN&export=download&confirm=t",
+      "fileSize": "27.77 GB",
+      "date": "2026-08-03",
+      "firmwareVersion": "15.0.0.406EX01",
+      "description": "Download the official Oppo A5X CPH2725 Stock Firmware ROM (Flash File) for your Oppo Mobile. We also provide all other Oppo Stock Firmware for free."
+    },
+    {
+      "brand": "Oppo",
       "deviceName": "Oppo A5X 5G CPH2733 Stock Firmware ROM (Flash File)",
       "deviceUrl": "https://oppostockrom.com/oppo-a5x-5g-cph2733",
       "googleDriveUrl": "https://drive.google.com/file/d/1NS_JsXmGLnG-KfZRonETnF2ROn2EPsXC/view?usp=drive_link",
@@ -254,17 +265,6 @@
       "date": "2026-03-06",
       "firmwareVersion": "15.0.2.704EX01",
       "description": "Download the official Oppo A6X 5G CPH2783 Stock Firmware ROM (Flash File) for your Oppo Mobile. We also provide all other Oppo Stock Firmware for free."
-    },
-    {
-      "brand": "Oppo",
-      "deviceName": "Oppo A5 5G CPH2751 Stock Firmware ROM (Flash File)",
-      "deviceUrl": "https://oppostockrom.com/oppo-a5-5g-cph2751",
-      "googleDriveUrl": "https://drive.google.com/file/d/1GverLl7kPJ_axMGEjict7tvAiesg--Ew/view?usp=sharing",
-      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1GverLl7kPJ_axMGEjict7tvAiesg--Ew&export=download&confirm=t",
-      "fileSize": "7 GB",
-      "date": "2026-03-06",
-      "firmwareVersion": "15.0.1.702EX01",
-      "description": "Download the official Oppo A5 5G CPH2751 Stock Firmware ROM (Flash File) for your Oppo Mobile. We also provide all other Oppo Stock Firmware for free."
     }
   ]
 }
