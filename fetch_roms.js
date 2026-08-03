@@ -348,6 +348,17 @@ function parseDevicePage(html, deviceUrl) {
   );
   if (dateMatch) result.date = dateMatch[1].trim();
 
+  // Fallback: many of these WordPress sites don't print a visible "Date:"
+  // label, but they do include the publish date in a meta tag, e.g.
+  //   <meta property="article:published_time" content="2026-07-17T12:15:50+00:00" />
+  if (!result.date) {
+    const metaTagMatch = html.match(/<meta[^>]*article:published_time[^>]*>/i);
+    if (metaTagMatch) {
+      const contentMatch = metaTagMatch[0].match(/content=["']([^"']+)["']/i);
+      if (contentMatch) result.date = contentMatch[1].trim().split("T")[0];
+    }
+  }
+
   // Extract description (meta description)
   const descMatch = html.match(/<meta\s+name="description"\s+content="([^"]+)"/i);
   if (descMatch) result.description = descMatch[1].trim();
