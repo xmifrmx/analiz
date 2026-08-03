@@ -2,7 +2,7 @@
   "name": "firmware-scraper",
   "version": "2.0.0",
   "private": true,
-  "description": "Multi-site firmware scraper. Finds direct download links for Oppo, Vivo, Realme, Infinix, Tecno, OnePlus, General Mobile, and Casper firmware. Generates per-brand RSS feeds with direct download links.",
+  "description": "Multi-site firmware scraper. Finds direct download links for Oppo, Vivo, Realme, Infinix, Tecno, OnePlus, Samsung, General Mobile, and Casper firmware. Generates per-brand RSS feeds with direct download links.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -14,6 +14,7 @@
     "scrape:infinix": "node fetch_roms.js infinix --out-dir ./feeds",
     "scrape:tecno": "node fetch_roms.js tecno --out-dir ./feeds",
     "scrape:oneplus": "node fetch_roms.js oneplus --out-dir ./feeds",
+    "scrape:samsung": "node fetch_roms.js samsung --out-dir ./feeds",
     "scrape:casper": "node fetch_roms.js casper --out-dir ./feeds",
     "scrape:gm": "node fetch_roms.js general-mobile --out-dir ./feeds",
     "test": "echo \"Error: no test specified\" && exit 1"
