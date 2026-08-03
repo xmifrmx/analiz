@@ -1,0 +1,61 @@
+{
+  "brand": "general-mobile",
+  "brandName": "General Mobile",
+  "files": [
+    {
+      "brand": "General Mobile",
+      "deviceName": "Wayback Machine",
+      "deviceUrl": "https://www.needrom.com/download/general-mobile-gm-9-plus",
+      "googleDriveUrl": "",
+      "directDownloadUrl": "https://www.needrom.com/download/general-mobile-gm-9-plus",
+      "fileSize": "Unknown",
+      "date": "Unknown",
+      "firmwareVersion": "Collections",
+      "description": "Requires needrom.com login to download"
+    },
+    {
+      "brand": "General Mobile",
+      "deviceName": "General Mobile GM 5 Plus     | [Official]        01/21/2025 on Needrom",
+      "deviceUrl": "https://www.needrom.com/download/general-mobile-gm-5-plus",
+      "googleDriveUrl": "",
+      "directDownloadUrl": "https://www.needrom.com/download/general-mobile-gm-5-plus",
+      "fileSize": "Unknown",
+      "date": "Unknown",
+      "firmwareVersion": "3.1.0_160414-0613",
+      "description": "ROM Mobile General Mobile GM 5 Plus – ROM Android 6.0.1 ONLY MSM8952 ROM Official General Mobile GM 5 Plus Version:"
+    },
+    {
+      "brand": "General Mobile",
+      "deviceName": "Wayback Machine",
+      "deviceUrl": "https://www.needrom.com/download/gm6-dual",
+      "googleDriveUrl": "",
+      "directDownloadUrl": "https://www.needrom.com/download/gm6-dual",
+      "fileSize": "Unknown",
+      "date": "Unknown",
+      "firmwareVersion": "Collections",
+      "description": "Requires needrom.com login to download"
+    },
+    {
+      "brand": "General Mobile",
+      "deviceName": "Wayback Machine",
+      "deviceUrl": "https://www.needrom.com/download/general-mobile-5-plus-eng-firmware",
+      "googleDriveUrl": "",
+      "directDownloadUrl": "https://www.needrom.com/download/general-mobile-5-plus-eng-firmware",
+      "fileSize": "Unknown",
+      "date": "Unknown",
+      "firmwareVersion": "Collections",
+      "description": "Requires needrom.com login to download"
+    },
+    {
+      "brand": "General Mobile",
+      "deviceName": "Wayback Machine",
+      "deviceUrl": "https://www.needrom.com/download/etab-5-mt8151-dump-scatter-file-tool",
+      "googleDriveUrl": "",
+      "directDownloadUrl": "https://www.needrom.com/download/etab-5-mt8151-dump-scatter-file-tool",
+      "fileSize": "Unknown",
+      "date": "Unknown",
+      "firmwareVersion": "Collections",
+      "description": "Requires needrom.com login to download"
+    }
+  ]
+}
