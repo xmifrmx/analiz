@@ -1,669 +1,604 @@
-#!/usr/bin/env node
-/**
- * fetch_roms.js
- *
- * Multi-site firmware scraper. Scrapes firmware download sites for
- * Oppo, Vivo, Realme, Infinix, Tecno, OnePlus, General Mobile, and Casper.
- * Finds direct download links (Google Drive) for each firmware file and
- * generates per-brand RSS feeds with direct download enclosures.
- *
- * Usage:
- *   node fetch_roms.js                      # scrape all brands
- *   node fetch_roms.js oppo                 # scrape single brand
- *   node fetch_roms.js oppo vivo            # scrape specific brands
- *   node fetch_roms.js --depth 1            # limit pagination depth
- *   node fetch_roms.js --out-dir ./feeds    # output directory
- *
- * Output:
- *   roms_<brand>.json  - structured metadata per brand
- *   rss_<brand>.xml    - RSS feed with direct download links per brand
- *   roms_all.json      - combined metadata
- *   rss_all.xml         - combined RSS feed
- */
+const axios = require('axios');
+const cheerio = require('cheerio');
+const Parser = require('rss-parser');
+const fs = require('fs');
+const path = require('path');
 
-const https = require("https");
-const http = require("http");
-const fs = require("fs");
-const path = require("path");
+const parser = new Parser({
+  timeout: 30000,
+  headers: {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  },
+});
 
-// ---------------------------------------------------------------------------
-// Brand configurations
-// ---------------------------------------------------------------------------
-const BRANDS = {
-  oppo: {
-    name: "Oppo",
-    site: "oppostockrom.com",
-    listUrl: "https://oppostockrom.com",
-    listSelector: "device",
-    type: "androidmtk-style",
-  },
-  vivo: {
-    name: "Vivo",
-    site: "vivofirmware.com",
-    listUrl: "https://vivofirmware.com",
-    listSelector: "device",
-    type: "androidmtk-style",
-  },
-  realme: {
-    name: "Realme",
-    site: "firmwarefile.com",
-    listUrl: "https://firmwarefile.com/category/realme",
-    listSelector: "category",
-    type: "firmwarefile-style",
-  },
-  infinix: {
-    name: "Infinix",
-    site: "firmwarefile.com",
-    listUrl: "https://firmwarefile.com/category/infinix",
-    listSelector: "category",
-    type: "firmwarefile-style",
-  },
-  tecno: {
-    name: "Tecno",
-    site: "naijarom.com",
-    listUrl: "https://naijarom.com/category/tecno",
-    listSelector: "category",
-    type: "naijarom-style",
-  },
-  oneplus: {
-    name: "OnePlus",
-    site: "firmwarefile.com",
-    listUrl: "https://firmwarefile.com/category/oneplus",
-    listSelector: "category",
-    type: "firmwarefile-style",
-  },
-  samsung: {
-    name: "Samsung",
-    site: "firmwarefile.com",
-    listUrl: "https://firmwarefile.com/category/samsung",
-    listSelector: "category",
-    type: "firmwarefile-style",
-  },
-  casper: {
-    name: "Casper",
-    site: "naijarom.com",
-    listUrl: "https://naijarom.com/category/casper",
-    listSelector: "category",
-    type: "naijarom-style",
-  },
-  "general-mobile": {
-    name: "General Mobile",
-    site: "needrom.com (via Wayback Machine)",
-    listUrl: "https://web.archive.org/web/2024/https://www.needrom.com/category/others/e-f-g-h/brands-g/general-mobile/",
-    listSelector: "category",
-    type: "needrom-wayback-style",
-  },
-};
+const FEED_DIR = path.join(__dirname, 'feed');
 
-// ---------------------------------------------------------------------------
-// Config
-// ---------------------------------------------------------------------------
-const RATE_LIMIT_MS = 200;
-const USER_AGENT =
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36";
-
-// ---------------------------------------------------------------------------
-// CLI parsing
-// ---------------------------------------------------------------------------
-function parseArgs() {
-  const args = process.argv.slice(2);
-  let brands = [];
-  let maxDepth = Infinity;
-  let outDir = ".";
-
-  for (let i = 0; i < args.length; i++) {
-    if (args[i] === "--depth") {
-      const d = parseInt(args[i + 1], 10);
-      maxDepth = isNaN(d) ? Infinity : d;
-      i++;
-    } else if (args[i] === "--out-dir") {
-      outDir = args[i + 1];
-      i++;
-    } else if (!args[i].startsWith("--")) {
-      brands.push(args[i].toLowerCase());
-    }
-  }
-
-  if (brands.length === 0) brands = Object.keys(BRANDS);
-  return { brands, maxDepth, outDir };
+if (!fs.existsSync(FEED_DIR)) {
+  fs.mkdirSync(FEED_DIR, { recursive: true });
 }
 
-// ---------------------------------------------------------------------------
-// HTTP fetch with gzip support and redirect following
-// ---------------------------------------------------------------------------
-function fetchText(url, redirectCount = 0) {
-  return new Promise((resolve, reject) => {
-    if (redirectCount > 10) {
-      return reject(new Error(`Too many redirects: ${url}`));
-    }
-    const mod = url.startsWith("https") ? https : http;
-    const req = mod.get(
-      url,
-      {
-        headers: {
-          "User-Agent": USER_AGENT,
-          Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-          "Accept-Language": "en-US,en;q=0.9",
-          "Accept-Encoding": "gzip, deflate",
-        },
+const SOURCES = [
+  {
+    name: 'Oppo USB Driver',
+    slug: 'oppo-usb-driver',
+    type: 'rss',
+    feedUrl: 'https://oppousbdriver.com/feed/',
+    pageUrl: 'https://oppousbdriver.com/',
+    directLink: 'https://oppousbdriver.com/wp-content/uploads/Oppo-USB-Driver-Setup-V4.0.1.6.zip',
+    description: 'Official Oppo USB Driver for Windows - Direct Download',
+  },
+  {
+    name: 'Xiaomi Engineer Rom',
+    slug: 'xiaomi-engineer-rom',
+    type: 'page-scraper',
+    pageUrl: 'https://xiaomitools.com/xiaomi-engineer-rom/',
+    description: 'Xiaomi Engineer Rom (ENG Rom) - Direct Download Links',
+    linkSelector: 'table a[href*="/download/"]',
+  },
+  {
+    name: 'Huawei Firmware',
+    slug: 'huawei-firmware',
+    type: 'rss',
+    feedUrl: 'https://firmwarefile.com/category/huawei/feed/',
+    pageUrl: 'https://firmwarefile.com/category/huawei',
+    description: 'Huawei Stock Firmware ROM (Flash File) - Direct Download Links',
+  },
+  {
+    name: 'SP Flash Tool',
+    slug: 'sp-flash-tool',
+    type: 'page-scraper',
+    pageUrl: 'https://xiaomitools.com/sp-flash-tool/',
+    description: 'SP Flash Tool All Versions - Direct Download Links',
+    linkSelector: 'a[href*="/download/sp-flash-tool"]',
+  },
+  {
+    name: 'Anakart Devre Semalari',
+    slug: 'anakart-devre-semalari',
+    type: 'page-scraper',
+    pageUrl: 'https://xiaomitools.com/xiaomi-anakart-devre-semalari/',
+    description: 'Xiaomi Anakart Devre Semalari - Direct Download Links',
+    linkSelector: 'a[href*="/download/"]',
+  },
+  {
+    name: 'Xiaomi Recovery',
+    slug: 'xiaomi-recovery',
+    type: 'page-scraper',
+    pageUrl: 'https://xiaomitools.com/xiaomi-recovery/',
+    description: 'Xiaomi Recovery (TWRP) - Direct Download Links',
+    linkSelector: 'a[href*="/download/"]',
+  },
+  {
+    name: 'SP Maui Meta Tool',
+    slug: 'sp-maui-meta-tool',
+    type: 'page-scraper',
+    pageUrl: 'https://xiaomitools.com/sp-maui-meta-tool/',
+    description: 'SP Maui Meta Tool All Versions - Direct Download Links',
+    linkSelector: 'a[href*="/download/mauimeta"]',
+  },
+  {
+    name: 'Anakart Direnc Degerleri',
+    slug: 'anakart-direnc-degerleri',
+    type: 'page-scraper',
+    pageUrl: 'https://xiaomitools.com/xiaomi-anakart-direnc-degerleri-ve-yerleri/',
+    description: 'Xiaomi Anakart Direnc Degerleri ve Yerleri - Direct Download Links',
+    linkSelector: 'a[href*="/download/"]',
+  },
+  {
+    name: 'ModemMeta Tool',
+    slug: 'modemmeta-tool',
+    type: 'page-scraper',
+    pageUrl: 'https://xiaomitools.com/modemmeta-tool-all-versions/',
+    description: 'ModemMeta Tool All Versions - Direct Download Links',
+    linkSelector: 'a[href*="/download/modemmeta"]',
+  },
+  {
+    name: 'Redmi POCO EDL Noktalari',
+    slug: 'redmi-poco-edl-noktalari',
+    type: 'page-scraper',
+    pageUrl: 'https://xiaomitools.com/tum-xiaomi-mi-redmi-poco-edl-noktalari/',
+    description: 'Tum Xiaomi Mi Redmi POCO EDL Noktalari - Direct Download Links',
+    linkSelector: 'a[href*="/download/"]',
+  },
+];
+
+function escapeXml(unsafe) {
+  if (!unsafe) return '';
+  return String(unsafe)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+function formatDate(date) {
+  if (!date) return new Date().toUTCString();
+  try {
+    return new Date(date).toUTCString();
+  } catch {
+    return new Date().toUTCString();
+  }
+}
+
+async function fetchWithRetry(url, retries = 3) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const response = await axios.get(url, {
         timeout: 30000,
-      },
-      (res) => {
-        if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-          const next = res.headers.location.startsWith("http")
-            ? res.headers.location
-            : new URL(res.headers.location, url).href;
-          res.resume();
-          return resolve(fetchText(next, redirectCount + 1));
-        }
-
-        const chunks = [];
-        const encoding = res.headers["content-encoding"];
-        let stream = res;
-
-        if (encoding === "gzip") {
-          const zlib = require("zlib");
-          stream = res.pipe(zlib.createGunzip());
-        } else if (encoding === "deflate") {
-          const zlib = require("zlib");
-          stream = res.pipe(zlib.createInflate());
-        }
-
-        stream.on("data", (c) => chunks.push(c));
-        stream.on("end", () => {
-          const body = Buffer.concat(chunks).toString("utf-8");
-          resolve({ body, statusCode: res.statusCode, headers: res.headers });
-        });
-        stream.on("error", reject);
-      }
-    );
-    req.on("error", reject);
-    req.on("timeout", () => {
-      req.destroy();
-      reject(new Error(`Timeout fetching ${url}`));
-    });
-  });
-}
-
-// ---------------------------------------------------------------------------
-// Google Drive direct download URL builder
-// ---------------------------------------------------------------------------
-function buildGDriveDirectUrl(viewUrl) {
-  const match = viewUrl.match(/\/file\/d\/([^/]+)/);
-  if (match) {
-    const fileId = match[1];
-    return `https://drive.usercontent.google.com/download?id=${fileId}&export=download&confirm=t`;
-  }
-  return viewUrl;
-}
-
-// ---------------------------------------------------------------------------
-// HTML parsers per site type
-// ---------------------------------------------------------------------------
-
-// androidmtk-style: oppostockrom.com, vivofirmware.com
-// These sites list devices on a single page, each linking to a device page
-function parseAndroidMtkStyleList(html, baseUrl) {
-  const devices = [];
-  const seen = new Set();
-
-  // Find device links in table rows - these sites use tables with device name + firmware link
-  const rowRegex = /<tr[^>]*>[\s\S]*?<a[^>]*href=["']([^"']+)["'][^>]*>([^<]+)<\/a>[\s\S]*?<\/tr>/g;
-  let m;
-  while ((m = rowRegex.exec(html)) !== null) {
-    const url = m[1];
-    const name = m[2].trim();
-    if (name && url && !url.includes("stock-rom") && !url.includes("usb-driver") && !seen.has(url)) {
-      seen.add(url);
-      devices.push({ url, name });
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+          'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        },
+        maxRedirects: 5,
+      });
+      return response.data;
+    } catch (error) {
+      console.error(`  Attempt ${i + 1}/${retries} failed for ${url}: ${error.message}`);
+      if (i === retries - 1) throw error;
+      await new Promise(resolve => setTimeout(resolve, 2000 * (i + 1)));
     }
   }
-
-  // Also try finding links by pattern (device pages on these specific sites)
-  const siteDomain = new URL(baseUrl).hostname;
-  const linkRegex = new RegExp(
-    `href=["'](https?://${siteDomain.replace(/\./g, "\\.")}/(?!category|page|wp-|privacy|refer|favicon|apple-touch|site\\.webmanifest)[^"']+)["']`,
-    "g"
-  );
-  while ((m = linkRegex.exec(html)) !== null) {
-    const slug = m[1].split("/").pop();
-    // Skip non-device URLs (icons, manifests, etc.)
-    if (slug.includes(".") || slug.length < 3) continue;
-    if (!seen.has(m[1])) {
-      seen.add(m[1]);
-      devices.push({ url: m[1], name: slug.replace(/-/g, " ") });
-    }
-  }
-
-  return devices;
 }
 
-// firmwarefile-style: firmwarefile.com
-// Lists devices on category pages with pagination
-function parseFirmwareFileStyleList(html, baseUrl) {
-  const devices = [];
-  const seen = new Set();
+async function resolveDirectDownload(pageUrl) {
+  try {
+    const html = await fetchWithRetry(pageUrl);
+    const $ = cheerio.load(html);
 
-  const linkRegex = /href=["'](https?:\/\/firmwarefile\.com\/(?!category|page|wp-|privacy|refer|favicon|apple-touch|site\.webmanifest|category-list)[^"'#]+)["']/g;
-  let m;
-  while ((m = linkRegex.exec(html)) !== null) {
-    if (!seen.has(m[1])) {
-      seen.add(m[1]);
-      devices.push({ url: m[1], name: m[1].split("/").pop().replace(/-/g, " ") });
+    // WordPress Download Manager plugin: ?wpdmdl=XXXX
+    const wpdmdlLink = $('a[href*="?wpdmdl="]').first().attr('href');
+    if (wpdmdlLink) {
+      return wpdmdlLink.replace(/&amp;/g, '&');
     }
-  }
 
-  return devices;
+    // Direct .zip/.rar links
+    const directFile = $('a[href$=".zip"], a[href$=".rar"]').first().attr('href');
+    if (directFile) {
+      return directFile.replace(/&amp;/g, '&');
+    }
+
+    // Google Drive links
+    const gdriveLink = $('a[href*="drive.google.com"]').first().attr('href');
+    if (gdriveLink) {
+      return gdriveLink.replace(/&amp;/g, '&');
+    }
+
+    // FirmwareDrive links
+    const firmwareLink = $('a[href*="firmwaredrive.com"]').first().attr('href');
+    if (firmwareLink) {
+      return firmwareLink.replace(/&amp;/g, '&');
+    }
+
+    return null;
+  } catch (error) {
+    console.error(`  Failed to resolve direct download from ${pageUrl}: ${error.message}`);
+    return null;
+  }
 }
 
-// naijarom-style: naijarom.com
-// Lists devices on category pages
-function parseNaijaromStyleList(html, baseUrl) {
-  const devices = [];
-  const seen = new Set();
+async function resolveFirmwareFileDirectDownload(pageUrl) {
+  try {
+    const html = await fetchWithRetry(pageUrl);
+    const $ = cheerio.load(html);
 
-  const linkRegex = /href=["'](https?:\/\/naijarom\.com\/(?!category|page|wp-|privacy|refer|favicon|apple-touch|site\.webmanifest|advance-search)[^"'#]+)["']/g;
-  let m;
-  while ((m = linkRegex.exec(html)) !== null) {
-    if (!seen.has(m[1])) {
-      seen.add(m[1]);
-      devices.push({ url: m[1], name: m[1].split("/").pop().replace(/-/g, " ") });
+    // Google Drive links
+    const gdriveLink = $('a[href*="drive.google.com"]').first().attr('href');
+    if (gdriveLink) {
+      return gdriveLink.replace(/&amp;/g, '&');
     }
-  }
 
-  return devices;
+    // FirmwareDrive links
+    const firmwareLink = $('a[href*="firmwaredrive.com"]').first().attr('href');
+    if (firmwareLink) {
+      return firmwareLink.replace(/&amp;/g, '&');
+    }
+
+    // Direct .zip links
+    const directFile = $('a[href$=".zip"], a[href$=".rar"]').first().attr('href');
+    if (directFile) {
+      return directFile.replace(/&amp;/g, '&');
+    }
+
+    return null;
+  } catch (error) {
+    console.error(`  Failed to resolve direct download from ${pageUrl}: ${error.message}`);
+    return null;
+  }
 }
 
-// needrom-style: needrom.com
-function parseNeedromStyleList(html, baseUrl) {
-  const devices = [];
-  const seen = new Set();
-
-  const linkRegex = /href=["'](https?:\/\/www\.needrom\.com\/download\/[^"']+)["']/g;
-  let m;
-  while ((m = linkRegex.exec(html)) !== null) {
-    const url = m[1].replace(/\/$/, "");
-    if (!seen.has(url)) {
-      seen.add(url);
-      devices.push({ url, name: url.split("/").pop().replace(/-/g, " ") });
-    }
-  }
-
-  return devices;
-}
-
-// needrom-wayback-style: needrom.com via Wayback Machine (Cloudflare blocks direct access)
-function parseNeedromWaybackStyleList(html, baseUrl) {
-  const devices = [];
-  const seen = new Set();
-
-  // Wayback Machine wraps needrom URLs - extract the original needrom download URLs
-  const linkRegex = /https?:\/\/web\.archive\.org\/web\/\d+\/(https?:\/\/www\.needrom\.com\/download\/[^"'\s<>]+)/g;
-  let m;
-  while ((m = linkRegex.exec(html)) !== null) {
-    const originalUrl = m[1].replace(/\/$/, "");
-    if (!seen.has(originalUrl)) {
-      seen.add(originalUrl);
-      devices.push({ url: originalUrl, name: originalUrl.split("/").pop().replace(/-/g, " ") });
-    }
-  }
-
-  return devices;
-}
-
-// Parse device page for download links (common across all sites)
-function parseDevicePage(html, deviceUrl) {
-  const result = {
-    name: "",
-    googleDriveUrl: "",
-    directDownloadUrl: "",
-    fileSize: "",
-    date: "",
-    firmwareVersion: "",
-    description: "",
-  };
-
-  // Extract title/name
-  const titleMatch = html.match(/<title>([^<]+)<\/title>/);
-  if (titleMatch) {
-    result.name = titleMatch[1]
-      .replace(/\s*[|\-–]\s*(Firmware|Stock ROM|Flash File|Firmware File|Naija ROM|FirmwareFile|Vivo Firmware|Oppo Stock ROM).*$/i, "")
-      .replace(/\s*Download\s*/i, "")
-      .trim();
-  }
-
-  // Extract Google Drive link (Mirror 1 - Free)
-  const gdriveMatch = html.match(
-    /https?:\/\/drive\.google\.com\/(?:file\/d\/[^"'\s<>]+|uc\?[^"'\s<>]+)/
-  );
-  if (gdriveMatch) {
-    result.googleDriveUrl = gdriveMatch[0];
-    result.directDownloadUrl = buildGDriveDirectUrl(gdriveMatch[0]);
-  }
-
-  // Extract file size - look for patterns like "3.82 GB" or "927.10 MB" near "size" label
-  const sizeMatch = html.match(/(?:File\s*Size|Filesize)\s*[:\-]?\s*(\d+(?:\.\d+)?\s*(?:KB|MB|GB|TB))/i);
-  if (sizeMatch) result.fileSize = sizeMatch[1].trim();
-  if (!result.fileSize) {
-    const sizeMatch2 = html.match(/(\d+(?:\.\d+)?\s*(?:KB|MB|GB|TB))/i);
-    if (sizeMatch2) result.fileSize = sizeMatch2[1].trim();
-  }
-
-  // Extract date
-  const dateMatch = html.match(
-    /(?:Date|Published|Updated|Posted)\s*[:\-]?\s*(\d{4}-\d{2}-\d{2}[^<\n]*)/i
-  );
-  if (dateMatch) result.date = dateMatch[1].trim();
-
-  // Fallback: many of these WordPress sites don't print a visible "Date:"
-  // label, but they do include the publish date in a meta tag, e.g.
-  //   <meta property="article:published_time" content="2026-07-17T12:15:50+00:00" />
-  if (!result.date) {
-    const metaTagMatch = html.match(/<meta[^>]*article:published_time[^>]*>/i);
-    if (metaTagMatch) {
-      const contentMatch = metaTagMatch[0].match(/content=["']([^"']+)["']/i);
-      if (contentMatch) result.date = contentMatch[1].trim().split("T")[0];
-    }
-  }
-
-  // Extract description (meta description)
-  const descMatch = html.match(/<meta\s+name="description"\s+content="([^"]+)"/i);
-  if (descMatch) result.description = descMatch[1].trim();
-
-  // Extract firmware version from page content
-  const versionMatch = html.match(/(?:Version|Build)\s*[:\-]?\s*([A-Z0-9][A-Za-z0-9._\-]{3,30})/);
-  if (versionMatch) result.firmwareVersion = versionMatch[1].trim();
-
-  // Fallback: some sites (e.g. oppostockrom.com, vivofirmware.com) never
-  // print an explicit "Version"/"Build" label — the version is only
-  // embedded inside the firmware "File Name" line, e.g.
-  //   File Name: Oppo_A5x_PKW110_MT6835_Domestic_11_15.0.1.701CN01_250806_MXML.zip
-  //   File Name: Vivo_PD2171_A_12.0.18.7.W10.V000L1_OTA.zip
-  // Pull the dotted version-like token (3+ dot-separated groups, which may
-  // mix digits and letters, e.g. "701CN01" or "W10") out of that line.
-  if (!result.firmwareVersion) {
-    const fileNameLineMatch = html.match(/File\s*Name[^:]*:\s*([^\n<]+)/i);
-    if (fileNameLineMatch) {
-      const verFromFileName = fileNameLineMatch[1].match(/(?:^|[_\s])(\d+(?:\.[A-Za-z0-9]+){2,})(?:[_\s]|$)/);
-      if (verFromFileName) {
-        // Guard against swallowing the file extension (e.g. "...4.1.2.zip")
-        result.firmwareVersion = verFromFileName[1]
-          .replace(/\.(zip|rar|7z|tar|gz)$/i, "")
-          .trim();
-      }
-    }
-  }
-
-  return result;
-}
-
-// ---------------------------------------------------------------------------
-// Scraper engine
-// ---------------------------------------------------------------------------
-async function scrapeBrand(brandKey, maxDepth) {
-  const brand = BRANDS[brandKey];
-  console.log(`\n${"=".repeat(60)}`);
-  console.log(` Scraping: ${brand.name} (${brand.site})`);
-  console.log(`${"=".repeat(60)}`);
-
-  const allDevices = [];
-  const allFiles = [];
+async function scrapeRssSource(source) {
+  console.log(`\n[${source.name}] Fetching RSS feed: ${source.feedUrl}`);
+  const items = [];
 
   try {
-    // Step 1: Fetch device list
-    console.log(`Fetching device list from ${brand.listUrl}...`);
-    const { body } = await fetchText(brand.listUrl);
-    await sleep(RATE_LIMIT_MS);
+    const feed = await parser.parseURL(source.feedUrl);
 
-    let devices = [];
-    switch (brand.type) {
-      case "androidmtk-style":
-        devices = parseAndroidMtkStyleList(body, brand.listUrl);
-        break;
-      case "firmwarefile-style":
-        devices = parseFirmwareFileStyleList(body, brand.listUrl);
-        break;
-      case "naijarom-style":
-        devices = parseNaijaromStyleList(body, brand.listUrl);
-        break;
-      case "needrom-style":
-        devices = parseNeedromStyleList(body, brand.listUrl);
-        break;
-      case "needrom-wayback-style":
-        devices = parseNeedromWaybackStyleList(body, brand.listUrl);
-        break;
+    if (!feed.items || feed.items.length === 0) {
+      // Fallback: use direct link if available
+      if (source.directLink) {
+        items.push({
+          title: source.name,
+          link: source.directLink,
+          directLink: source.directLink,
+          pubDate: new Date().toUTCString(),
+          description: source.description,
+        });
+      }
+      return items;
     }
 
-    console.log(`Found ${devices.length} devices`);
+    for (const item of feed.items.slice(0, 50)) {
+      let directLink = null;
 
-    // Handle pagination for firmwarefile and naijarom
-    if (brand.type === "firmwarefile-style" || brand.type === "naijarom-style") {
-      const pageMatch = body.match(/href=["']([^"']*\/page\/2[^"']*)["']/);
-      if (pageMatch && maxDepth > 1) {
-        let pageUrl = pageMatch[1];
-        let pageNum = 2;
-        while (pageUrl && pageNum <= maxDepth) {
-          console.log(`  Fetching page ${pageNum}...`);
-          try {
-            const { body: pageBody } = await fetchText(pageUrl);
-            await sleep(RATE_LIMIT_MS);
-            let pageDevices = [];
-            if (brand.type === "firmwarefile-style") {
-              pageDevices = parseFirmwareFileStyleList(pageBody, pageUrl);
-            } else {
-              pageDevices = parseNaijaromStyleList(pageBody, pageUrl);
-            }
-            if (pageDevices.length === 0) break;
-            devices.push(...pageDevices);
-            console.log(`    +${pageDevices.length} devices (total: ${devices.length})`);
-            const nextMatch = pageBody.match(/href=["']([^"']*\/page\/(\d+)[^"']*)["']/g);
-            pageUrl = null;
-            if (nextMatch) {
-              for (const nm of nextMatch) {
-                const pm = nm.match(/\/page\/(\d+)/);
-                if (pm && parseInt(pm[1]) === pageNum + 1) {
-                  const urlMatch = nm.match(/href=["']([^"']+)["']/);
-                  if (urlMatch) pageUrl = urlMatch[1];
-                }
-              }
-            }
-            pageNum++;
-          } catch (e) {
-            console.log(`    Page ${pageNum} failed: ${e.message}`);
-            break;
+      if (source.directLink && feed.items.length === 1) {
+        directLink = source.directLink;
+      } else if (source.slug === 'huawei-firmware') {
+        directLink = await resolveFirmwareFileDirectDownload(item.link);
+      } else if (source.directLink) {
+        directLink = source.directLink;
+      } else {
+        directLink = await resolveDirectDownload(item.link);
+      }
+
+      items.push({
+        title: item.title || source.name,
+        link: item.link,
+        directLink: directLink || item.link,
+        pubDate: item.isoDate || item.pubDate || new Date().toISOString(),
+        description: item.contentSnippet || item.content || item.title || source.description,
+      });
+    }
+  } catch (error) {
+    console.error(`  RSS fetch failed: ${error.message}`);
+    // Fallback to direct link
+    if (source.directLink) {
+      items.push({
+        title: source.name,
+        link: source.directLink,
+        directLink: source.directLink,
+        pubDate: new Date().toUTCString(),
+        description: source.description,
+      });
+    }
+  }
+
+  return items;
+}
+
+async function scrapePageSource(source) {
+  console.log(`\n[${source.name}] Scraping page: ${source.pageUrl}`);
+  const items = [];
+
+  try {
+    const html = await fetchWithRetry(source.pageUrl);
+    const $ = cheerio.load(html);
+
+    // Find all download links on the page
+    const downloadLinks = new Set();
+    $('a[href*="/download/"]').each((i, el) => {
+      const href = $(el).attr('href');
+      if (href && !href.includes('huiye-download-tool') && !href.includes('#')) {
+        // Clean up href - remove trailing rel= or other attributes that got concatenated
+        const cleanHref = href.split(' rel=')[0].split(" rel='")[0].split(' class=')[0].trim();
+        if (cleanHref) downloadLinks.add(cleanHref);
+      }
+    });
+
+    // Also check for specific selector
+    if (source.linkSelector) {
+      $(source.linkSelector).each((i, el) => {
+        const href = $(el).attr('href');
+        if (href && !href.includes('huiye-download-tool') && !href.includes('#')) {
+          const cleanHref = href.split(' rel=')[0].split(" rel='")[0].split(' class=')[0].trim();
+          if (cleanHref) downloadLinks.add(cleanHref);
+        }
+      });
+    }
+
+    // Also find direct file links (images for schematics/EDL/resistors)
+    if (source.slug === 'anakart-devre-semalari' || source.slug === 'anakart-direnc-degerleri' || source.slug === 'redmi-poco-edl-noktalari') {
+      $('img').each((i, el) => {
+        let src = $(el).attr('src') || '';
+        // Also check data-src for lazy-loaded images
+        const dataSrc = $(el).attr('data-src') || $(el).attr('data-lazy-src') || '';
+        if (dataSrc) src = dataSrc;
+        
+        if (src && src.includes('wp-content/uploads') && 
+            !src.includes('cropped-unlock') && 
+            !src.includes('favicon') && 
+            !src.includes('logo') &&
+            !src.includes('screenshot-300x') &&
+            !src.includes('download.png')) {
+          // Convert thumbnail to full-size by removing -WIDTHxHEIGHT suffix
+          let fullSrc = src.replace(/-\d+x\d+\./, '.');
+          // Remove -1 suffix if it's a duplicate
+          fullSrc = fullSrc.replace(/-1\.(png|jpg|jpeg|webp)$/i, '.$1');
+          downloadLinks.add(fullSrc);
+        }
+      });
+      
+      // Also check for links to images (href to .png/.jpg/.jpeg files)
+      $('a[href]').each((i, el) => {
+        const href = $(el).attr('href');
+        if (href && href.match(/\.(png|jpg|jpeg|webp|gif)$/i) && 
+            href.includes('wp-content/uploads') &&
+            !href.includes('cropped-unlock')) {
+          downloadLinks.add(href);
+        }
+      });
+    }
+
+    console.log(`  Found ${downloadLinks.size} download links`);
+
+    let count = 0;
+    for (const dlPageUrl of downloadLinks) {
+      if (count >= 50) break;
+
+      let title = '';
+      let directLink = null;
+
+      if (dlPageUrl.includes('/download/')) {
+        // This is a download page - need to resolve the direct link
+        const fullUrl = dlPageUrl.startsWith('http') ? dlPageUrl : `https://xiaomitools.com${dlPageUrl}`;
+        
+        // Extract title from URL
+        const slug = fullUrl.split('/download/')[1]?.replace(/\/$/, '') || '';
+        title = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+
+        directLink = await resolveDirectDownload(fullUrl);
+        
+        if (directLink) {
+          items.push({
+            title: title || source.name,
+            link: fullUrl,
+            directLink: directLink,
+            pubDate: new Date().toUTCString(),
+            description: `${title} - Direct Download from ${source.name}`,
+          });
+          count++;
+        }
+      } else if (dlPageUrl.includes('wp-content/uploads')) {
+        // Direct image/file link
+        const fullUrl = dlPageUrl.startsWith('http') ? dlPageUrl : `https://xiaomitools.com${dlPageUrl}`;
+        const filename = fullUrl.split('/').pop().split('-').slice(0, -1).join('-') || fullUrl.split('/').pop();
+        title = filename.replace(/\.(png|jpg|jpeg|webp|gif)$/i, '').replace(/-/g, ' ');
+
+        items.push({
+          title: title || source.name,
+          link: fullUrl,
+          directLink: fullUrl,
+          pubDate: new Date().toUTCString(),
+          description: `${title} - Direct Download from ${source.name}`,
+        });
+        count++;
+      }
+
+      // Small delay to avoid overwhelming the server
+      if (count % 5 === 0 && count > 0) {
+        await new Promise(resolve => setTimeout(resolve, 500));
+      }
+    }
+  } catch (error) {
+    console.error(`  Page scrape failed: ${error.message}`);
+  }
+
+  return items;
+}
+
+async function scrapeOppoDriver(source) {
+  console.log(`\n[${source.name}] Fetching from: ${source.pageUrl}`);
+  const items = [];
+
+  try {
+    // First, get the direct download link from the main page
+    const html = await fetchWithRetry(source.pageUrl);
+    const $ = cheerio.load(html);
+
+    // Find the latest direct download link from the main page
+    let zipLink = $('a[href$=".zip"]').first().attr('href');
+    // Also search in any element's href or src attribute
+    if (!zipLink) {
+      zipLink = $('[href$=".zip"]').first().attr('href');
+    }
+    // Search in page text/HTML for .zip URLs
+    if (!zipLink) {
+      const htmlStr = $.html();
+      const zipMatch = htmlStr.match(/https?:\/\/[^\s"'<>]+\.zip/i);
+      if (zipMatch) zipLink = zipMatch[0];
+    }
+    // Use known direct link as fallback
+    if (!zipLink && source.directLink) {
+      zipLink = source.directLink;
+    }
+    if (zipLink) {
+      const versionMatch = zipLink.match(/V([\d.]+)/);
+      const version = versionMatch ? `v${versionMatch[1]}` : 'Latest';
+      items.push({
+        title: `Oppo USB Driver ${version}`,
+        link: zipLink,
+        directLink: zipLink,
+        pubDate: new Date().toUTCString(),
+        description: `${source.description} - Version ${version}`,
+      });
+    }
+
+    // Also check RSS feed for individual driver posts
+    try {
+      const feed = await parser.parseURL(source.feedUrl);
+      for (const item of feed.items.slice(0, 20)) {
+        // Try to find direct download link from the item page
+        try {
+          const itemHtml = await fetchWithRetry(item.link);
+          const $item = cheerio.load(itemHtml);
+          let directZip = $item('a[href$=".zip"]').first().attr('href');
+          // Also search in any element
+          if (!directZip) directZip = $item('[href$=".zip"]').first().attr('href');
+          // Search in page HTML
+          if (!directZip) {
+            const itemHtmlStr = $item.html();
+            const zipMatch = itemHtmlStr.match(/https?:\/\/[^\s"'<>]+\.zip/i);
+            if (zipMatch) directZip = zipMatch[0];
           }
+          
+          items.push({
+            title: item.title || source.name,
+            link: item.link,
+            directLink: directZip || source.directLink || item.link,
+            pubDate: item.isoDate || item.pubDate || new Date().toISOString(),
+            description: item.contentSnippet || item.title || source.description,
+          });
+        } catch (itemError) {
+          console.error(`  Failed to fetch item page ${item.link}: ${itemError.message}`);
         }
       }
+    } catch (feedError) {
+      console.error(`  RSS feed fetch failed: ${feedError.message}`);
     }
-
-    // Step 2: Visit each device page and extract download links
-    const limit = maxDepth === Infinity ? devices.length : Math.min(devices.length, maxDepth);
-    console.log(`Scraping ${limit} device pages...`);
-
-    for (let i = 0; i < limit; i++) {
-      const device = devices[i];
-      process.stdout.write(`  [${i + 1}/${limit}] ${device.name}... `);
-
-      try {
-        // For needrom-wayback-style, fetch device pages via Wayback Machine (Cloudflare blocks direct access)
-        const fetchUrl = brand.type === "needrom-wayback-style"
-          ? `https://web.archive.org/web/2024/${device.url}`
-          : device.url;
-        const { body: deviceHtml } = await fetchText(fetchUrl);
-        await sleep(RATE_LIMIT_MS);
-
-        const info = parseDevicePage(deviceHtml, device.url);
-        if (info.directDownloadUrl) {
-          allFiles.push({
-            brand: brand.name,
-            deviceName: info.name || device.name,
-            deviceUrl: device.url,
-            googleDriveUrl: info.googleDriveUrl,
-            directDownloadUrl: info.directDownloadUrl,
-            fileSize: info.fileSize || "Unknown",
-            date: info.date || "Unknown",
-            firmwareVersion: info.firmwareVersion || "",
-            description: info.description || "",
-          });
-          console.log(`OK - ${info.directDownloadUrl.substring(0, 80)}...`);
-        } else if (brand.type === "needrom-wayback-style") {
-          // Needrom requires login - use the device page URL as the link
-          allFiles.push({
-            brand: brand.name,
-            deviceName: info.name || device.name,
-            deviceUrl: device.url,
-            googleDriveUrl: "",
-            directDownloadUrl: device.url,
-            fileSize: info.fileSize || "Unknown",
-            date: info.date || "Unknown",
-            firmwareVersion: info.firmwareVersion || "",
-            description: info.description || "Requires needrom.com login to download",
-          });
-          console.log(`OK (needrom login required) - ${device.url.substring(0, 80)}...`);
-        } else {
-          console.log("NO DOWNLOAD LINK");
-        }
-      } catch (e) {
-        console.log(`ERROR: ${e.message}`);
-      }
+  } catch (error) {
+    console.error(`  Oppo driver fetch failed: ${error.message}`);
+    // Fallback to known direct link
+    if (source.directLink) {
+      items.push({
+        title: source.name,
+        link: source.directLink,
+        directLink: source.directLink,
+        pubDate: new Date().toUTCString(),
+        description: source.description,
+      });
     }
-  } catch (e) {
-    console.log(`Failed to scrape ${brand.name}: ${e.message}`);
   }
 
-  console.log(`\n${brand.name}: ${allFiles.length} files with direct download links`);
-  return { brand: brandKey, brandName: brand.name, files: allFiles };
+  return items;
 }
 
-// ---------------------------------------------------------------------------
-// RSS generator
-// ---------------------------------------------------------------------------
-function escapeXml(str) {
-  if (!str) return "";
-  return String(str)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&apos;");
-}
-
-function generateRss(brandName, files) {
+function generateFeedXml(source, items) {
   const now = new Date().toUTCString();
-  let items = "";
-
-  for (const f of files) {
-    const pubDate =
-      f.date && f.date !== "Unknown" ? new Date(f.date).toUTCString() : now;
-
-    items += `    <item>
-      <title>${escapeXml(f.deviceName)}</title>
-      <link>${escapeXml(f.directDownloadUrl)}</link>
-      <guid isPermaLink="false">${escapeXml(f.brand)}-${escapeXml(f.deviceUrl.split("/").pop())}</guid>
-      <pubDate>${pubDate}</pubDate>
-      <description><![CDATA[
-        Device: ${escapeXml(f.deviceName)}
-        <br/>Brand: ${escapeXml(f.brand)}
-        <br/>Size: ${escapeXml(f.fileSize)}
-        <br/>Date: ${escapeXml(f.date)}
-        ${f.firmwareVersion ? "<br/>Version: " + escapeXml(f.firmwareVersion) : ""}
-        <br/><a href="${escapeXml(f.directDownloadUrl)}">Direct Download (Google Drive)</a>
-        ${f.googleDriveUrl ? `<br/><a href="${escapeXml(f.googleDriveUrl)}">Open in Google Drive</a>` : ""}
-        <br/><a href="${escapeXml(f.deviceUrl)}">Source Page</a>
-      ]]></description>
-      <enclosure url="${escapeXml(f.directDownloadUrl)}" type="application/zip" />
-    </item>\n`;
+  
+  let itemsXml = '';
+  for (const item of items) {
+    const downloadLink = item.directLink || item.link;
+    const description = `${escapeXml(item.description || '')}<br/><br/><strong>Direct Download:</strong> <a href="${escapeXml(downloadLink)}">${escapeXml(downloadLink)}</a>`;
+    
+    itemsXml += `
+    <item>
+      <title>${escapeXml(item.title)}</title>
+      <link>${escapeXml(item.link)}</link>
+      <description><![CDATA[${description}]]></description>
+      <guid isPermaLink="false">${escapeXml(item.link)}</guid>
+      <pubDate>${formatDate(item.pubDate)}</pubDate>
+      <category>${escapeXml(source.name)}</category>
+    </item>`;
   }
 
-  return `<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <atom:link href="firmwaredrive.com" rel="self" type="application/rss+xml"/>
-    <generator>fetch_roms.js</generator>
-    <title>${escapeXml(brandName)} Firmware - Direct Downloads</title>
-    <link>https://firmwaredrive.com</link>
-    <description>Direct download links for ${escapeXml(brandName)} firmware files. Click any link to download directly without visiting the site.</description>
-    <language>en</language>
-    <lastBuildDate>${now}</lastBuildDate>
-${items}  </channel>
-</rss>
-`;
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>${escapeXml(source.name)}</title>
+  <atom:link href="${escapeXml(source.pageUrl || source.feedUrl)}/feed.xml" rel="self" type="application/rss+xml" />
+  <link>${escapeXml(source.pageUrl || source.feedUrl)}</link>
+  <description>${escapeXml(source.description)}</description>
+  <language>tr</language>
+  <lastBuildDate>${now}</lastBuildDate>
+  <generator>analiz-main scraper</generator>${itemsXml}
+</channel>
+</rss>`;
 }
 
-// ---------------------------------------------------------------------------
-// Utility
-// ---------------------------------------------------------------------------
-function sleep(ms) {
-  return new Promise((r) => setTimeout(r, ms));
+function generateCombinedFeedXml(allItems) {
+  const now = new Date().toUTCString();
+  
+  let itemsXml = '';
+  for (const item of allItems) {
+    const downloadLink = item.directLink || item.link;
+    const description = `${escapeXml(item.description || '')}<br/><br/><strong>Direct Download:</strong> <a href="${escapeXml(downloadLink)}">${escapeXml(downloadLink)}</a>`;
+    
+    itemsXml += `
+    <item>
+      <title>${escapeXml(item.title)}</title>
+      <link>${escapeXml(item.link)}</link>
+      <description><![CDATA[${description}]]></description>
+      <guid isPermaLink="false">${escapeXml(item.link)}</guid>
+      <pubDate>${formatDate(item.pubDate)}</pubDate>
+      <category>${escapeXml(item.source)}</category>
+    </item>`;
+  }
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Firmware & Tools Direct Download Feed</title>
+  <atom:link href="https://example.com/feed/all-feed.xml" rel="self" type="application/rss+xml" />
+  <link>https://example.com</link>
+  <description>Combined RSS feed with direct download links for firmware, tools, and schematics</description>
+  <language>tr</language>
+  <lastBuildDate>${now}</lastBuildDate>
+  <generator>analiz-main scraper</generator>${itemsXml}
+</channel>
+</rss>`;
 }
 
-// ---------------------------------------------------------------------------
-// Main
-// ---------------------------------------------------------------------------
 async function main() {
-  const { brands, maxDepth, outDir } = parseArgs();
+  console.log('=== Analiz Main Scraper ===');
+  console.log(`Started at: ${new Date().toISOString()}`);
+  console.log(`Sources: ${SOURCES.length}\n`);
 
-  console.log(`\n${"=".repeat(60)}`);
-  console.log(` Multi-Site Firmware Scraper`);
-  console.log(`${"=".repeat(60)}`);
-  console.log(` Brands: ${brands.join(", ")}`);
-  console.log(` Max depth: ${maxDepth === Infinity ? "unlimited" : maxDepth}`);
-  console.log(` Output dir: ${outDir}`);
-  console.log(`${"=".repeat(60)}\n`);
+  const allItems = [];
 
-  // Ensure output directory exists
-  if (!fs.existsSync(outDir)) {
-    fs.mkdirSync(outDir, { recursive: true });
-  }
+  for (const source of SOURCES) {
+    let items = [];
 
-  const allResults = [];
+    try {
+      if (source.slug === 'oppo-usb-driver') {
+        items = await scrapeOppoDriver(source);
+      } else if (source.type === 'rss') {
+        items = await scrapeRssSource(source);
+      } else if (source.type === 'page-scraper') {
+        items = await scrapePageSource(source);
+      }
 
-  for (const brandKey of brands) {
-    if (!BRANDS[brandKey]) {
-      console.log(`Unknown brand: ${brandKey}`);
-      console.log(`Available: ${Object.keys(BRANDS).join(", ")}`);
-      continue;
+      console.log(`  -> Got ${items.length} items`);
+
+      // Add source name to each item for combined feed
+      items.forEach(item => {
+        item.source = source.name;
+      });
+
+      allItems.push(...items);
+
+      // Generate individual feed
+      const feedXml = generateFeedXml(source, items);
+      const feedPath = path.join(FEED_DIR, `${source.slug}.xml`);
+      fs.writeFileSync(feedPath, feedXml, 'utf-8');
+      console.log(`  -> Saved: ${feedPath}`);
+    } catch (error) {
+      console.error(`  -> ERROR for ${source.name}: ${error.message}`);
+      // Still generate empty feed
+      const feedXml = generateFeedXml(source, []);
+      const feedPath = path.join(FEED_DIR, `${source.slug}.xml`);
+      fs.writeFileSync(feedPath, feedXml, 'utf-8');
     }
-
-    const result = await scrapeBrand(brandKey, maxDepth);
-    allResults.push(result);
-
-    // Write per-brand JSON
-    const jsonPath = path.join(outDir, `roms_${brandKey}.json`);
-    fs.writeFileSync(jsonPath, JSON.stringify(result, null, 2));
-    console.log(`Written: ${jsonPath}`);
-
-    // Write per-brand RSS
-    const rssXml = generateRss(result.brandName, result.files);
-    const rssPath = path.join(outDir, `rss_${brandKey}.xml`);
-    fs.writeFileSync(rssPath, rssXml);
-    console.log(`Written: ${rssPath}`);
   }
 
-  // Write combined JSON
-  const combinedJson = path.join(outDir, "roms_all.json");
-  fs.writeFileSync(combinedJson, JSON.stringify(allResults, null, 2));
-  console.log(`\nWritten combined: ${combinedJson}`);
+  // Generate combined feed
+  console.log(`\n=== Generating combined feed with ${allItems.length} items ===`);
+  const combinedXml = generateCombinedFeedXml(allItems);
+  const combinedPath = path.join(FEED_DIR, 'all-feed.xml');
+  fs.writeFileSync(combinedPath, combinedXml, 'utf-8');
+  console.log(`Saved: ${combinedPath}`);
 
-  // Write combined RSS
-  const allFiles = allResults.flatMap((r) => r.files);
-  const combinedRss = generateRss("All Brands", allFiles);
-  const combinedRssPath = path.join(outDir, "rss_all.xml");
-  fs.writeFileSync(combinedRssPath, combinedRss);
-  console.log(`Written combined: ${combinedRssPath}`);
-
-  // Summary
-  console.log(`\n${"=".repeat(60)}`);
-  console.log(` Summary`);
-  console.log(`${"=".repeat(60)}`);
-  for (const r of allResults) {
-    console.log(`  ${r.brandName.padEnd(20)} ${r.files.length} files`);
-  }
-  console.log(`  ${"Total".padEnd(20)} ${allFiles.length} files`);
-  console.log(`${"=".repeat(60)}\n`);
+  console.log(`\n=== Done! ===`);
+  console.log(`Total items: ${allItems.length}`);
+  console.log(`Finished at: ${new Date().toISOString()}`);
 }
 
-main().catch((err) => {
-  console.error("Fatal error:", err);
+main().catch(error => {
+  console.error('Fatal error:', error);
   process.exit(1);
 });

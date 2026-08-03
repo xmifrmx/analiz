@@ -1,20 +1,14 @@
-console.log(`Firmware Scraper v2.0`);
-console.log(`\nSupported brands:`);
-console.log(`  oppo            - oppostockrom.com (Google Drive direct download)`);
-console.log(`  vivo            - vivofirmware.com (Google Drive direct download)`);
-console.log(`  realme          - firmwarefile.com (Google Drive direct download)`);
-console.log(`  infinix         - firmwarefile.com (Google Drive direct download)`);
-console.log(`  tecno           - naijarom.com (Google Drive direct download)`);
-console.log(`  oneplus         - firmwarefile.com (Google Drive direct download)`);
-console.log(`  casper          - naijarom.com (Google Drive direct download)`);
-console.log(`  general-mobile  - needrom.com via Wayback Machine (login required)`);
-console.log(`\nUsage:`);
-console.log(`  node fetch_roms.js                      # scrape all brands`);
-console.log(`  node fetch_roms.js oppo vivo            # scrape specific brands`);
-console.log(`  node fetch_roms.js --depth 10           # limit device count per brand`);
-console.log(`  node fetch_roms.js --out-dir ./feeds    # specify output directory`);
-console.log(`\nOutput per brand:`);
-console.log(`  roms_<brand>.json   - structured metadata`);
-console.log(`  rss_<brand>.xml     - RSS feed with direct download links`);
-console.log(`  roms_all.json       - combined metadata`);
-console.log(`  rss_all.xml         - combined RSS feed`);
+const { execSync } = require('child_process');
+const fs = require('fs');
+const path = require('path');
+
+console.log('=== Analiz Main - Entry Point ===\n');
+
+const feedDir = path.join(__dirname, 'feed');
+
+try {
+  require('./fetch_roms.js');
+} catch (error) {
+  console.error('Error running scraper:', error.message);
+  process.exit(1);
+}
