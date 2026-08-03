@@ -79,6 +79,13 @@ const BRANDS = {
     listSelector: "category",
     type: "firmwarefile-style",
   },
+  samsung: {
+    name: "Huawei",
+    site: "firmwarefile.com",
+    listUrl: "https://firmwarefile.com/category/huawei",
+    listSelector: "category",
+    type: "firmwarefile-style",
+  },
   casper: {
     name: "Casper",
     site: "naijarom.com",
