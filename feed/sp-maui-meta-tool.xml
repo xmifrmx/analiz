@@ -1,95 +1,112 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0"
-  xmlns:content="http://purl.org/rss/1.0/modules/content/"
-  xmlns:dc="http://purl.org/dc/elements/1.1/"
-  xmlns:atom="http://www.w3.org/2005/Atom">
-<channel>
-  <title>SP Maui Meta Tool</title>
-  <atom:link href="https://xiaomitools.com/sp-maui-meta-tool//feed.xml" rel="self" type="application/rss+xml" />
-  <link>https://xiaomitools.com/sp-maui-meta-tool/</link>
-  <description>SP Maui Meta Tool All Versions - Direct Download Links</description>
-  <language>tr</language>
-  <lastBuildDate>Mon, 03 Aug 2026 13:16:53 GMT</lastBuildDate>
-  <generator>analiz-main scraper</generator>
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <atom:link href="https://xiaomitools.com/sp-maui-meta-tool/" rel="self" type="application/rss+xml"/>
+    <generator>fetch_roms.js</generator>
+    <title>SP Maui Meta Tool - Direct Downloads</title>
+    <link>https://xiaomitools.com/sp-maui-meta-tool/</link>
+    <description>SP Maui Meta Tool All Versions - Direct Download Links</description>
+    <language>tr</language>
+    <lastBuildDate>Mon, 03 Aug 2026 13:29:48 GMT</lastBuildDate>
     <item>
       <title>Mauimeta V9 1724</title>
-      <link>https://xiaomitools.com/download/mauimeta-v9-1724/</link>
-      <description><![CDATA[Mauimeta V9 1724 - Direct Download from SP Maui Meta Tool<br/><br/><strong>Direct Download:</strong> <a href="https://xiaomitools.com/download/mauimeta-v9-1724/?wpdmdl=2302&amp;refresh=6a6961a68020f1785291174&amp;ind=0&amp;filename=MauiMETA_v9.1724.zip">https://xiaomitools.com/download/mauimeta-v9-1724/?wpdmdl=2302&amp;refresh=6a6961a68020f1785291174&amp;ind=0&amp;filename=MauiMETA_v9.1724.zip</a>]]></description>
-      <guid isPermaLink="false">https://xiaomitools.com/download/mauimeta-v9-1724/</guid>
-      <pubDate>Mon, 03 Aug 2026 13:16:50 GMT</pubDate>
-      <category>SP Maui Meta Tool</category>
+      <link>https://xiaomitools.com/download/mauimeta-v9-1724/?wpdmdl=2302&amp;refresh=6a6961a68020f1785291174&amp;ind=0&amp;filename=MauiMETA_v9.1724.zip</link>
+      <guid isPermaLink="false">Xiaomi-mauimeta-v9-1724</guid>
+      <pubDate>Mon, 03 Aug 2026 13:29:45 GMT</pubDate>
+      <description><![CDATA[
+        Device: Mauimeta V9 1724<br/>Brand: Xiaomi<br/>Size: 38MB<br/>Version: s<br/><a href="https://xiaomitools.com/download/mauimeta-v9-1724/?wpdmdl=2302&amp;refresh=6a6961a68020f1785291174&amp;ind=0&amp;filename=MauiMETA_v9.1724.zip">Direct Download (Link)</a><br/><a href="https://xiaomitools.com/download/mauimeta-v9-1724/">Source Page</a>
+      ]]></description>
+      <enclosure url="https://xiaomitools.com/download/mauimeta-v9-1724/?wpdmdl=2302&amp;refresh=6a6961a68020f1785291174&amp;ind=0&amp;filename=MauiMETA_v9.1724.zip" type="application/zip" />
     </item>
     <item>
       <title>Mauimeta V9 1708</title>
-      <link>https://xiaomitools.com/download/mauimeta-v9-1708/</link>
-      <description><![CDATA[Mauimeta V9 1708 - Direct Download from SP Maui Meta Tool<br/><br/><strong>Direct Download:</strong> <a href="https://xiaomitools.com/download/mauimeta-v9-1708/?wpdmdl=2297&amp;refresh=6a6961a3e73f21785291171&amp;ind=0&amp;filename=MauiMETA_v9.1708.zip">https://xiaomitools.com/download/mauimeta-v9-1708/?wpdmdl=2297&amp;refresh=6a6961a3e73f21785291171&amp;ind=0&amp;filename=MauiMETA_v9.1708.zip</a>]]></description>
-      <guid isPermaLink="false">https://xiaomitools.com/download/mauimeta-v9-1708/</guid>
-      <pubDate>Mon, 03 Aug 2026 13:16:51 GMT</pubDate>
-      <category>SP Maui Meta Tool</category>
+      <link>https://xiaomitools.com/download/mauimeta-v9-1708/?wpdmdl=2297&amp;refresh=6a6961a3e73f21785291171&amp;ind=0&amp;filename=MauiMETA_v9.1708.zip</link>
+      <guid isPermaLink="false">Xiaomi-mauimeta-v9-1708</guid>
+      <pubDate>Mon, 03 Aug 2026 13:29:45 GMT</pubDate>
+      <description><![CDATA[
+        Device: Mauimeta V9 1708<br/>Brand: Xiaomi<br/>Size: 40MB<br/>Version: s<br/><a href="https://xiaomitools.com/download/mauimeta-v9-1708/?wpdmdl=2297&amp;refresh=6a6961a3e73f21785291171&amp;ind=0&amp;filename=MauiMETA_v9.1708.zip">Direct Download (Link)</a><br/><a href="https://xiaomitools.com/download/mauimeta-v9-1708/">Source Page</a>
+      ]]></description>
+      <enclosure url="https://xiaomitools.com/download/mauimeta-v9-1708/?wpdmdl=2297&amp;refresh=6a6961a3e73f21785291171&amp;ind=0&amp;filename=MauiMETA_v9.1708.zip" type="application/zip" />
     </item>
     <item>
       <title>Mauimeta V9 1635</title>
-      <link>https://xiaomitools.com/download/mauimeta-v9-1635/</link>
-      <description><![CDATA[Mauimeta V9 1635 - Direct Download from SP Maui Meta Tool<br/><br/><strong>Direct Download:</strong> <a href="https://xiaomitools.com/download/mauimeta-v9-1635/?wpdmdl=2299&amp;refresh=6a6a77ca93f1c1785362378&amp;ind=0&amp;filename=MauiMETA_v9.1635.zip">https://xiaomitools.com/download/mauimeta-v9-1635/?wpdmdl=2299&amp;refresh=6a6a77ca93f1c1785362378&amp;ind=0&amp;filename=MauiMETA_v9.1635.zip</a>]]></description>
-      <guid isPermaLink="false">https://xiaomitools.com/download/mauimeta-v9-1635/</guid>
-      <pubDate>Mon, 03 Aug 2026 13:16:51 GMT</pubDate>
-      <category>SP Maui Meta Tool</category>
+      <link>https://xiaomitools.com/download/mauimeta-v9-1635/?wpdmdl=2299&amp;refresh=6a6a77ca93f1c1785362378&amp;ind=0&amp;filename=MauiMETA_v9.1635.zip</link>
+      <guid isPermaLink="false">Xiaomi-mauimeta-v9-1635</guid>
+      <pubDate>Mon, 03 Aug 2026 13:29:45 GMT</pubDate>
+      <description><![CDATA[
+        Device: Mauimeta V9 1635<br/>Brand: Xiaomi<br/>Size: 26MB<br/>Version: s<br/><a href="https://xiaomitools.com/download/mauimeta-v9-1635/?wpdmdl=2299&amp;refresh=6a6a77ca93f1c1785362378&amp;ind=0&amp;filename=MauiMETA_v9.1635.zip">Direct Download (Link)</a><br/><a href="https://xiaomitools.com/download/mauimeta-v9-1635/">Source Page</a>
+      ]]></description>
+      <enclosure url="https://xiaomitools.com/download/mauimeta-v9-1635/?wpdmdl=2299&amp;refresh=6a6a77ca93f1c1785362378&amp;ind=0&amp;filename=MauiMETA_v9.1635.zip" type="application/zip" />
     </item>
     <item>
       <title>Mauimeta V9 1604</title>
-      <link>https://xiaomitools.com/download/mauimeta-v9-1604/</link>
-      <description><![CDATA[Mauimeta V9 1604 - Direct Download from SP Maui Meta Tool<br/><br/><strong>Direct Download:</strong> <a href="https://xiaomitools.com/download/mauimeta-v9-1604/?wpdmdl=2300&amp;refresh=6a6961a15d1201785291169&amp;ind=0&amp;filename=MauiMETA_v9.1604.zip">https://xiaomitools.com/download/mauimeta-v9-1604/?wpdmdl=2300&amp;refresh=6a6961a15d1201785291169&amp;ind=0&amp;filename=MauiMETA_v9.1604.zip</a>]]></description>
-      <guid isPermaLink="false">https://xiaomitools.com/download/mauimeta-v9-1604/</guid>
-      <pubDate>Mon, 03 Aug 2026 13:16:51 GMT</pubDate>
-      <category>SP Maui Meta Tool</category>
+      <link>https://xiaomitools.com/download/mauimeta-v9-1604/?wpdmdl=2300&amp;refresh=6a6961a15d1201785291169&amp;ind=0&amp;filename=MauiMETA_v9.1604.zip</link>
+      <guid isPermaLink="false">Xiaomi-mauimeta-v9-1604</guid>
+      <pubDate>Mon, 03 Aug 2026 13:29:45 GMT</pubDate>
+      <description><![CDATA[
+        Device: Mauimeta V9 1604<br/>Brand: Xiaomi<br/>Size: 24MB<br/>Version: s<br/><a href="https://xiaomitools.com/download/mauimeta-v9-1604/?wpdmdl=2300&amp;refresh=6a6961a15d1201785291169&amp;ind=0&amp;filename=MauiMETA_v9.1604.zip">Direct Download (Link)</a><br/><a href="https://xiaomitools.com/download/mauimeta-v9-1604/">Source Page</a>
+      ]]></description>
+      <enclosure url="https://xiaomitools.com/download/mauimeta-v9-1604/?wpdmdl=2300&amp;refresh=6a6961a15d1201785291169&amp;ind=0&amp;filename=MauiMETA_v9.1604.zip" type="application/zip" />
     </item>
     <item>
       <title>Mauimeta V9 1602</title>
-      <link>https://xiaomitools.com/download/mauimeta-v9-1602/</link>
-      <description><![CDATA[Mauimeta V9 1602 - Direct Download from SP Maui Meta Tool<br/><br/><strong>Direct Download:</strong> <a href="https://xiaomitools.com/download/mauimeta-v9-1602/?wpdmdl=2298&amp;refresh=6a6a77c8b2f261785362376&amp;ind=0&amp;filename=MauiMETA_v9.1602.zip">https://xiaomitools.com/download/mauimeta-v9-1602/?wpdmdl=2298&amp;refresh=6a6a77c8b2f261785362376&amp;ind=0&amp;filename=MauiMETA_v9.1602.zip</a>]]></description>
-      <guid isPermaLink="false">https://xiaomitools.com/download/mauimeta-v9-1602/</guid>
-      <pubDate>Mon, 03 Aug 2026 13:16:51 GMT</pubDate>
-      <category>SP Maui Meta Tool</category>
+      <link>https://xiaomitools.com/download/mauimeta-v9-1602/?wpdmdl=2298&amp;refresh=6a6a77c8b2f261785362376&amp;ind=0&amp;filename=MauiMETA_v9.1602.zip</link>
+      <guid isPermaLink="false">Xiaomi-mauimeta-v9-1602</guid>
+      <pubDate>Mon, 03 Aug 2026 13:29:46 GMT</pubDate>
+      <description><![CDATA[
+        Device: Mauimeta V9 1602<br/>Brand: Xiaomi<br/>Size: 40MB<br/>Version: s<br/><a href="https://xiaomitools.com/download/mauimeta-v9-1602/?wpdmdl=2298&amp;refresh=6a6a77c8b2f261785362376&amp;ind=0&amp;filename=MauiMETA_v9.1602.zip">Direct Download (Link)</a><br/><a href="https://xiaomitools.com/download/mauimeta-v9-1602/">Source Page</a>
+      ]]></description>
+      <enclosure url="https://xiaomitools.com/download/mauimeta-v9-1602/?wpdmdl=2298&amp;refresh=6a6a77c8b2f261785362376&amp;ind=0&amp;filename=MauiMETA_v9.1602.zip" type="application/zip" />
     </item>
     <item>
       <title>Mauimeta V9 1548</title>
-      <link>https://xiaomitools.com/download/mauimeta-v9-1548/</link>
-      <description><![CDATA[Mauimeta V9 1548 - Direct Download from SP Maui Meta Tool<br/><br/><strong>Direct Download:</strong> <a href="https://xiaomitools.com/download/mauimeta-v9-1548/?wpdmdl=2294&amp;refresh=6a6a77c15a8831785362369&amp;ind=0&amp;filename=MauiMETA_v9.1548.zip">https://xiaomitools.com/download/mauimeta-v9-1548/?wpdmdl=2294&amp;refresh=6a6a77c15a8831785362369&amp;ind=0&amp;filename=MauiMETA_v9.1548.zip</a>]]></description>
-      <guid isPermaLink="false">https://xiaomitools.com/download/mauimeta-v9-1548/</guid>
-      <pubDate>Mon, 03 Aug 2026 13:16:52 GMT</pubDate>
-      <category>SP Maui Meta Tool</category>
+      <link>https://xiaomitools.com/download/mauimeta-v9-1548/?wpdmdl=2294&amp;refresh=6a6a77c15a8831785362369&amp;ind=0&amp;filename=MauiMETA_v9.1548.zip</link>
+      <guid isPermaLink="false">Xiaomi-mauimeta-v9-1548</guid>
+      <pubDate>Mon, 03 Aug 2026 13:29:46 GMT</pubDate>
+      <description><![CDATA[
+        Device: Mauimeta V9 1548<br/>Brand: Xiaomi<br/>Size: 24MB<br/>Version: s<br/><a href="https://xiaomitools.com/download/mauimeta-v9-1548/?wpdmdl=2294&amp;refresh=6a6a77c15a8831785362369&amp;ind=0&amp;filename=MauiMETA_v9.1548.zip">Direct Download (Link)</a><br/><a href="https://xiaomitools.com/download/mauimeta-v9-1548/">Source Page</a>
+      ]]></description>
+      <enclosure url="https://xiaomitools.com/download/mauimeta-v9-1548/?wpdmdl=2294&amp;refresh=6a6a77c15a8831785362369&amp;ind=0&amp;filename=MauiMETA_v9.1548.zip" type="application/zip" />
     </item>
     <item>
       <title>Mauimeta V9 1536</title>
-      <link>https://xiaomitools.com/download/mauimeta-v9-1536/</link>
-      <description><![CDATA[Mauimeta V9 1536 - Direct Download from SP Maui Meta Tool<br/><br/><strong>Direct Download:</strong> <a href="https://xiaomitools.com/download/mauimeta-v9-1536/?wpdmdl=2296&amp;refresh=6a69619ecaa691785291166&amp;ind=0&amp;filename=MauiMETA_v9.1536.zip">https://xiaomitools.com/download/mauimeta-v9-1536/?wpdmdl=2296&amp;refresh=6a69619ecaa691785291166&amp;ind=0&amp;filename=MauiMETA_v9.1536.zip</a>]]></description>
-      <guid isPermaLink="false">https://xiaomitools.com/download/mauimeta-v9-1536/</guid>
-      <pubDate>Mon, 03 Aug 2026 13:16:52 GMT</pubDate>
-      <category>SP Maui Meta Tool</category>
+      <link>https://xiaomitools.com/download/mauimeta-v9-1536/?wpdmdl=2296&amp;refresh=6a69619ecaa691785291166&amp;ind=0&amp;filename=MauiMETA_v9.1536.zip</link>
+      <guid isPermaLink="false">Xiaomi-mauimeta-v9-1536</guid>
+      <pubDate>Mon, 03 Aug 2026 13:29:46 GMT</pubDate>
+      <description><![CDATA[
+        Device: Mauimeta V9 1536<br/>Brand: Xiaomi<br/>Size: 42MB<br/>Version: s<br/><a href="https://xiaomitools.com/download/mauimeta-v9-1536/?wpdmdl=2296&amp;refresh=6a69619ecaa691785291166&amp;ind=0&amp;filename=MauiMETA_v9.1536.zip">Direct Download (Link)</a><br/><a href="https://xiaomitools.com/download/mauimeta-v9-1536/">Source Page</a>
+      ]]></description>
+      <enclosure url="https://xiaomitools.com/download/mauimeta-v9-1536/?wpdmdl=2296&amp;refresh=6a69619ecaa691785291166&amp;ind=0&amp;filename=MauiMETA_v9.1536.zip" type="application/zip" />
     </item>
     <item>
       <title>Mauimeta V8 1520</title>
-      <link>https://xiaomitools.com/download/mauimeta-v8-1520/</link>
-      <description><![CDATA[Mauimeta V8 1520 - Direct Download from SP Maui Meta Tool<br/><br/><strong>Direct Download:</strong> <a href="https://xiaomitools.com/download/mauimeta-v8-1520/?wpdmdl=2295&amp;refresh=6a69619c5e37d1785291164&amp;ind=0&amp;filename=MauiMETA_v8.1520.zip">https://xiaomitools.com/download/mauimeta-v8-1520/?wpdmdl=2295&amp;refresh=6a69619c5e37d1785291164&amp;ind=0&amp;filename=MauiMETA_v8.1520.zip</a>]]></description>
-      <guid isPermaLink="false">https://xiaomitools.com/download/mauimeta-v8-1520/</guid>
-      <pubDate>Mon, 03 Aug 2026 13:16:52 GMT</pubDate>
-      <category>SP Maui Meta Tool</category>
+      <link>https://xiaomitools.com/download/mauimeta-v8-1520/?wpdmdl=2295&amp;refresh=6a69619c5e37d1785291164&amp;ind=0&amp;filename=MauiMETA_v8.1520.zip</link>
+      <guid isPermaLink="false">Xiaomi-mauimeta-v8-1520</guid>
+      <pubDate>Mon, 03 Aug 2026 13:29:47 GMT</pubDate>
+      <description><![CDATA[
+        Device: Mauimeta V8 1520<br/>Brand: Xiaomi<br/>Size: 0.00 KB<br/>Version: s<br/><a href="https://xiaomitools.com/download/mauimeta-v8-1520/?wpdmdl=2295&amp;refresh=6a69619c5e37d1785291164&amp;ind=0&amp;filename=MauiMETA_v8.1520.zip">Direct Download (Link)</a><br/><a href="https://xiaomitools.com/download/mauimeta-v8-1520/">Source Page</a>
+      ]]></description>
+      <enclosure url="https://xiaomitools.com/download/mauimeta-v8-1520/?wpdmdl=2295&amp;refresh=6a69619c5e37d1785291164&amp;ind=0&amp;filename=MauiMETA_v8.1520.zip" type="application/zip" />
     </item>
     <item>
       <title>Mauimeta V8 1516</title>
-      <link>https://xiaomitools.com/download/mauimeta-v8-1516/</link>
-      <description><![CDATA[Mauimeta V8 1516 - Direct Download from SP Maui Meta Tool<br/><br/><strong>Direct Download:</strong> <a href="https://xiaomitools.com/download/mauimeta-v8-1516/?wpdmdl=2303&amp;refresh=6a696199c199f1785291161&amp;ind=0&amp;filename=MauiMETA_v8.1516.zip">https://xiaomitools.com/download/mauimeta-v8-1516/?wpdmdl=2303&amp;refresh=6a696199c199f1785291161&amp;ind=0&amp;filename=MauiMETA_v8.1516.zip</a>]]></description>
-      <guid isPermaLink="false">https://xiaomitools.com/download/mauimeta-v8-1516/</guid>
-      <pubDate>Mon, 03 Aug 2026 13:16:52 GMT</pubDate>
-      <category>SP Maui Meta Tool</category>
+      <link>https://xiaomitools.com/download/mauimeta-v8-1516/?wpdmdl=2303&amp;refresh=6a696199c199f1785291161&amp;ind=0&amp;filename=MauiMETA_v8.1516.zip</link>
+      <guid isPermaLink="false">Xiaomi-mauimeta-v8-1516</guid>
+      <pubDate>Mon, 03 Aug 2026 13:29:47 GMT</pubDate>
+      <description><![CDATA[
+        Device: Mauimeta V8 1516<br/>Brand: Xiaomi<br/>Size: 40MB<br/>Version: s<br/><a href="https://xiaomitools.com/download/mauimeta-v8-1516/?wpdmdl=2303&amp;refresh=6a696199c199f1785291161&amp;ind=0&amp;filename=MauiMETA_v8.1516.zip">Direct Download (Link)</a><br/><a href="https://xiaomitools.com/download/mauimeta-v8-1516/">Source Page</a>
+      ]]></description>
+      <enclosure url="https://xiaomitools.com/download/mauimeta-v8-1516/?wpdmdl=2303&amp;refresh=6a696199c199f1785291161&amp;ind=0&amp;filename=MauiMETA_v8.1516.zip" type="application/zip" />
     </item>
     <item>
       <title>Mauimeta V8 1512</title>
-      <link>https://xiaomitools.com/download/mauimeta-v8-1512/</link>
-      <description><![CDATA[Mauimeta V8 1512 - Direct Download from SP Maui Meta Tool<br/><br/><strong>Direct Download:</strong> <a href="https://xiaomitools.com/download/mauimeta-v8-1512/?wpdmdl=2301&amp;refresh=6a6a77cf0e65c1785362383&amp;ind=0&amp;filename=MauiMETA_v8.1512.zip">https://xiaomitools.com/download/mauimeta-v8-1512/?wpdmdl=2301&amp;refresh=6a6a77cf0e65c1785362383&amp;ind=0&amp;filename=MauiMETA_v8.1512.zip</a>]]></description>
-      <guid isPermaLink="false">https://xiaomitools.com/download/mauimeta-v8-1512/</guid>
-      <pubDate>Mon, 03 Aug 2026 13:16:52 GMT</pubDate>
-      <category>SP Maui Meta Tool</category>
+      <link>https://xiaomitools.com/download/mauimeta-v8-1512/?wpdmdl=2301&amp;refresh=6a6a77cf0e65c1785362383&amp;ind=0&amp;filename=MauiMETA_v8.1512.zip</link>
+      <guid isPermaLink="false">Xiaomi-mauimeta-v8-1512</guid>
+      <pubDate>Mon, 03 Aug 2026 13:29:47 GMT</pubDate>
+      <description><![CDATA[
+        Device: Mauimeta V8 1512<br/>Brand: Xiaomi<br/>Size: 40MB<br/>Version: s<br/><a href="https://xiaomitools.com/download/mauimeta-v8-1512/?wpdmdl=2301&amp;refresh=6a6a77cf0e65c1785362383&amp;ind=0&amp;filename=MauiMETA_v8.1512.zip">Direct Download (Link)</a><br/><a href="https://xiaomitools.com/download/mauimeta-v8-1512/">Source Page</a>
+      ]]></description>
+      <enclosure url="https://xiaomitools.com/download/mauimeta-v8-1512/?wpdmdl=2301&amp;refresh=6a6a77cf0e65c1785362383&amp;ind=0&amp;filename=MauiMETA_v8.1512.zip" type="application/zip" />
     </item>
-</channel>
+  </channel>
 </rss>
