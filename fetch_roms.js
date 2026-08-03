@@ -79,7 +79,7 @@ const BRANDS = {
     listSelector: "category",
     type: "firmwarefile-style",
   },
-  samsung: {
+  huawei: {
     name: "Huawei",
     site: "firmwarefile.com",
     listUrl: "https://firmwarefile.com/category/huawei",
