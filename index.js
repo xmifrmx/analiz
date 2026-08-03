@@ -3,6 +3,7 @@ console.log(`\nSupported brands:`);
 console.log(`  oppo            - oppostockrom.com (Google Drive direct download)`);
 console.log(`  vivo            - vivofirmware.com (Google Drive direct download)`);
 console.log(`  realme          - firmwarefile.com (Google Drive direct download)`);
+console.log(`  huawei          - firmwarefile.com (Google Drive direct download)`);
 console.log(`  infinix         - firmwarefile.com (Google Drive direct download)`);
 console.log(`  tecno           - naijarom.com (Google Drive direct download)`);
 console.log(`  oneplus         - firmwarefile.com (Google Drive direct download)`);
