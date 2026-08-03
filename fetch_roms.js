@@ -356,6 +356,20 @@ function parseDevicePage(html, deviceUrl) {
   const versionMatch = html.match(/(?:Version|Build)\s*[:\-]?\s*([A-Z0-9][A-Za-z0-9._\-]{3,30})/);
   if (versionMatch) result.firmwareVersion = versionMatch[1].trim();
 
+  // Fallback: some sites (e.g. oppostockrom.com) never print an explicit
+  // "Version"/"Build" label — the version is only embedded inside the
+  // firmware "File Name" line, e.g.
+  //   File Name: Oppo_A5x_PKW110_MT6835_Domestic_11_15.0.1.701CN01_250806_MXML.zip
+  // Pull the dotted version-like token (3+ numeric groups, optional
+  // alphanumeric suffix) out of that line instead.
+  if (!result.firmwareVersion) {
+    const fileNameLineMatch = html.match(/File\s*Name[^:]*:\s*([^\n<]+)/i);
+    if (fileNameLineMatch) {
+      const verFromFileName = fileNameLineMatch[1].match(/(?:^|[_\s])(\d+(?:\.\d+){2,}[A-Za-z0-9]*)(?:[_\s]|$)/);
+      if (verFromFileName) result.firmwareVersion = verFromFileName[1].trim();
+    }
+  }
+
   return result;
 }
 
