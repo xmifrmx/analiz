@@ -538,14 +538,14 @@ function generateRss(brandName, files) {
       <guid isPermaLink="false">${escapeXml(f.brand)}-${escapeXml(f.deviceUrl.split("/").pop())}</guid>
       <pubDate>${pubDate}</pubDate>
       <description><![CDATA[
-        Device: ${escapeXml(f.deviceName)}<br/>
-        Brand: ${escapeXml(f.brand)}<br/>
-        Size: ${escapeXml(f.fileSize)}<br/>
-        Date: ${escapeXml(f.date)}<br/>
-        ${f.firmwareVersion ? "Version: " + escapeXml(f.firmwareVersion) + "<br/>" : ""}
-        <a href="${escapeXml(f.directDownloadUrl)}">Direct Download (Google Drive)</a><br/>
-        ${f.googleDriveUrl ? `<a href="${escapeXml(f.googleDriveUrl)}">Open in Google Drive</a><br/>` : ""}
-        <a href="${escapeXml(f.deviceUrl)}">Source Page</a>
+        Device: ${escapeXml(f.deviceName)}
+        <br/>Brand: ${escapeXml(f.brand)}
+        <br/>Size: ${escapeXml(f.fileSize)}
+        <br/>Date: ${escapeXml(f.date)}
+        ${f.firmwareVersion ? "<br/>Version: " + escapeXml(f.firmwareVersion) : ""}
+        <br/><a href="${escapeXml(f.directDownloadUrl)}">Direct Download (Google Drive)</a>
+        ${f.googleDriveUrl ? `<br/><a href="${escapeXml(f.googleDriveUrl)}">Open in Google Drive</a>` : ""}
+        <br/><a href="${escapeXml(f.deviceUrl)}">Source Page</a>
       ]]></description>
       <enclosure url="${escapeXml(f.directDownloadUrl)}" type="application/zip" />
     </item>\n`;
