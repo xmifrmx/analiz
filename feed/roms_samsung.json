@@ -4,6 +4,17 @@
   "files": [
     {
       "brand": "Samsung",
+      "deviceName": "Samsung SM-X936B Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/samsung-sm-x936b",
+      "googleDriveUrl": "https://drive.google.com/file/d/15bn9W6xZHQ7dDzq2wffcrECAyykqdiVr/view?usp=drive_link",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=15bn9W6xZHQ7dDzq2wffcrECAyykqdiVr&export=download&confirm=t",
+      "fileSize": "23.79 GB",
+      "date": "2026-08-03",
+      "firmwareVersion": "",
+      "description": "Download the official Samsung SM-X936B Stock Firmware ROM (Flash File) for your Samsung Mobile. We also provide all other Samsung Stock Firmware for free."
+    },
+    {
+      "brand": "Samsung",
       "deviceName": "Samsung SM-F776Z Stock Firmware ROM (Flash File)",
       "deviceUrl": "https://firmwarefile.com/samsung-sm-f776z",
       "googleDriveUrl": "https://drive.google.com/file/d/1lZiuz40uCjgXOjiB1q4xfQZjQilZ_N6l/view?usp=drive_link",
@@ -430,17 +441,6 @@
       "date": "2026-06-03",
       "firmwareVersion": "",
       "description": "Download the official Samsung SM-A076E Stock Firmware ROM (Flash File) for your Samsung Mobile. We also provide all other Samsung Stock Firmware for free."
-    },
-    {
-      "brand": "Samsung",
-      "deviceName": "Samsung SM-M366K Stock Firmware ROM (Flash File)",
-      "deviceUrl": "https://firmwarefile.com/samsung-sm-m366k",
-      "googleDriveUrl": "https://drive.google.com/file/d/1qerrUQhgxKiQ_PlRFNAFlZISH7pA6GrB/view?usp=sharing",
-      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1qerrUQhgxKiQ_PlRFNAFlZISH7pA6GrB&export=download&confirm=t",
-      "fileSize": "7.84 GB",
-      "date": "2026-06-03",
-      "firmwareVersion": "",
-      "description": "Download the official Samsung SM-M366K Stock Firmware ROM (Flash File) for your Samsung Mobile. We also provide all other Samsung Stock Firmware for free."
     },
     {
       "brand": "Samsung",
