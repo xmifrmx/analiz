@@ -86,6 +86,13 @@ const BRANDS = {
     listSelector: "category",
     type: "firmwarefile-style",
   },
+  lenovo: {
+    name: "Lenovo",
+    site: "firmwarefile.com",
+    listUrl: "https://firmwarefile.com/category/lenovo",
+    listSelector: "category",
+    type: "firmwarefile-style",
+  },
   casper: {
     name: "Casper",
     site: "naijarom.com",
