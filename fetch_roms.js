@@ -12,7 +12,20 @@ const parser = new Parser({
   },
 });
 
-const FEED_DIR = path.join(__dirname, 'feed');
+const args = process.argv.slice(2);
+let MAX_ITEMS = 50;
+let FEED_DIR = path.join(__dirname, 'feed');
+
+for (let i = 0; i < args.length; i++) {
+  if (args[i] === '--depth' && args[i + 1]) {
+    MAX_ITEMS = parseInt(args[i + 1], 10) || 50;
+    i++;
+  }
+  if (args[i] === '--out-dir' && args[i + 1]) {
+    FEED_DIR = path.resolve(args[i + 1]);
+    i++;
+  }
+}
 
 if (!fs.existsSync(FEED_DIR)) {
   fs.mkdirSync(FEED_DIR, { recursive: true });
@@ -306,7 +319,7 @@ async function scrapeRssSource(source) {
       return items;
     }
 
-    for (const item of feed.items.slice(0, 50)) {
+    for (const item of feed.items.slice(0, MAX_ITEMS)) {
       let result = { directLink: null, openLink: null, meta: {} };
 
       if (source.slug === 'huawei-firmware') {
@@ -405,7 +418,7 @@ async function scrapePageSource(source) {
 
     let count = 0;
     for (const dlPageUrl of downloadLinks) {
-      if (count >= 50) break;
+      if (count >= MAX_ITEMS) break;
 
       let title = '';
       let directLink = null;
