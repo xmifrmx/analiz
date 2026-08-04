@@ -3,10 +3,10 @@
   <channel>
     <atom:link href="firmwaredrive.com" rel="self" type="application/rss+xml"/>
     <generator>fetch_roms.js</generator>
-    <title>Panasonic Firmware - Direct Downloads</title>
+    <title>Tanix Firmware - Direct Downloads</title>
     <link>https://firmwaredrive.com</link>
-    <description>Direct download links for Panasonic firmware files. Click any link to download directly without visiting the site.</description>
+    <description>Direct download links for Tanix firmware files. Click any link to download directly without visiting the site.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 04 Aug 2026 00:08:02 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 04 Aug 2026 00:08:04 GMT</lastBuildDate>
   </channel>
 </rss>

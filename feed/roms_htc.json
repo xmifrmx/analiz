@@ -1,28 +1,5 @@
 {
   "brand": "htc",
   "brandName": "HTC",
-  "files": [
-    {
-      "brand": "HTC",
-      "deviceName": "HTC Desire 830 Stock Firmware ROM (Flash File)",
-      "deviceUrl": "https://firmwarefile.com/htc-desire-830",
-      "googleDriveUrl": "https://drive.google.com/file/d/1RjKoZ0UJKTE6-ujyoiOyWWAUKk8kaKYr/view",
-      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1RjKoZ0UJKTE6-ujyoiOyWWAUKk8kaKYr&export=download&confirm=t",
-      "fileSize": "150.6 MB",
-      "date": "2023-11-06",
-      "firmwareVersion": "2.4",
-      "description": "Download the official HTC Desire 830 Stock Firmware ROM (Flash File) for your HTC Mobile. We also provide all other HTC Stock Firmware for free."
-    },
-    {
-      "brand": "HTC",
-      "deviceName": "HTC Desire D820PI Stock Firmware ROM (Flash File)",
-      "deviceUrl": "https://firmwarefile.com/htc-desire-d820pi",
-      "googleDriveUrl": "https://drive.google.com/file/d/19m2o4LCRoViJXfUKvsTznHPOYgeL-HOE/view",
-      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=19m2o4LCRoViJXfUKvsTznHPOYgeL-HOE&export=download&confirm=t",
-      "fileSize": "867.50 MB",
-      "date": "2016-11-29",
-      "firmwareVersion": "1.12.401.1",
-      "description": "Download the official HTC Desire D820PI Stock Firmware ROM (Flash File) for your HTC Mobile. We also provide all other HTC Stock Firmware for free."
-    }
-  ]
+  "files": []
 }
