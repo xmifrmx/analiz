@@ -3,10 +3,10 @@
   <channel>
     <atom:link href="firmwaredrive.com" rel="self" type="application/rss+xml"/>
     <generator>fetch_roms.js</generator>
-    <title>Cherry Mobile Firmware - Direct Downloads</title>
+    <title>Jolla Firmware - Direct Downloads</title>
     <link>https://firmwaredrive.com</link>
-    <description>Direct download links for Cherry Mobile firmware files. Click any link to download directly without visiting the site.</description>
+    <description>Direct download links for Jolla firmware files. Click any link to download directly without visiting the site.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 04 Aug 2026 18:15:44 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 04 Aug 2026 18:17:58 GMT</lastBuildDate>
   </channel>
 </rss>
