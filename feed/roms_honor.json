@@ -444,6 +444,17 @@
     },
     {
       "brand": "Honor",
+      "deviceName": "Honor Pad X9 ELN-LX9 Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/honor-pad-x9-eln-lx9",
+      "googleDriveUrl": "https://drive.google.com/file/d/1Vw4JrUPjWYz3hoJ9CCgSZ5vZybrOcYVf/view?usp=sharing",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1Vw4JrUPjWYz3hoJ9CCgSZ5vZybrOcYVf&export=download&confirm=t",
+      "fileSize": "3.56 GB",
+      "date": "2026-03-25",
+      "firmwareVersion": "7.1.0.112",
+      "description": "Download the official Honor Pad X9 ELN-LX9 Stock Firmware ROM (Flash File) for your Honor Mobile. We also provide all other Honor Stock Firmware for free."
+    },
+    {
+      "brand": "Honor",
       "deviceName": "Honor Pad X9A ELN2-LX9 Stock Firmware ROM (Flash File)",
       "deviceUrl": "https://firmwarefile.com/honor-pad-x9a-eln2-lx9",
       "googleDriveUrl": "https://drive.google.com/file/d/1FZytVJzBH7-KhXW_oftkI7_CtOUjRA57/view?usp=sharing",
@@ -529,17 +540,6 @@
       "date": "2026-03-24",
       "firmwareVersion": "9.0.0.185",
       "description": "Download the official Honor X8C ABR-LX2 Stock Firmware ROM (Flash File) for your Honor Mobile. We also provide all other Honor Stock Firmware for free."
-    },
-    {
-      "brand": "Honor",
-      "deviceName": "Honor 90 5G REA-NX9 Stock Firmware ROM (Flash File)",
-      "deviceUrl": "https://firmwarefile.com/honor-90-5g-rea-nx9",
-      "googleDriveUrl": "https://drive.google.com/file/d/1JSf8xmVQqztMjxX9zj5aXzuIAMALKwZI/view?usp=sharing",
-      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1JSf8xmVQqztMjxX9zj5aXzuIAMALKwZI&export=download&confirm=t",
-      "fileSize": "5.94 GB",
-      "date": "2026-03-23",
-      "firmwareVersion": "8.0.0.210",
-      "description": "Download the official Honor 90 5G REA-NX9 Stock Firmware ROM (Flash File) for your Honor Mobile. We also provide all other Honor Stock Firmware for free."
     }
   ]
 }

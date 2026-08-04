@@ -1,0 +1,72 @@
+{
+  "brand": "quantum",
+  "brandName": "Quantum",
+  "files": [
+    {
+      "brand": "Quantum",
+      "deviceName": "Quantum Q-Wave 71M Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/quantum-q-wave-71m",
+      "googleDriveUrl": "https://drive.google.com/file/d/1A88CtSQVLRDTwbSWyivAD5qJwt5Xl1Ji/view",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1A88CtSQVLRDTwbSWyivAD5qJwt5Xl1Ji&export=download&confirm=t",
+      "fileSize": "420 MB",
+      "date": "2023-07-22",
+      "firmwareVersion": "4.4.2",
+      "description": "Download the official Quantum Q-Wave 71M Stock Firmware ROM (Flash File) for your Quantum Mobile. We also provide all other Quantum Stock Firmware for free."
+    },
+    {
+      "brand": "Quantum",
+      "deviceName": "Quantum Q-Wave 61L Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/quantum-q-wave-61l",
+      "googleDriveUrl": "https://drive.google.com/file/d/1_XC0JFocU90jjjqWkvW365GAvxyGIrzw/view",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1_XC0JFocU90jjjqWkvW365GAvxyGIrzw&export=download&confirm=t",
+      "fileSize": "410 MB",
+      "date": "2023-07-22",
+      "firmwareVersion": "4.4.2",
+      "description": "Download the official Quantum Q-Wave 61L Stock Firmware ROM (Flash File) for your Quantum Mobile. We also provide all other Quantum Stock Firmware for free."
+    },
+    {
+      "brand": "Quantum",
+      "deviceName": "Quantum Q-Titano H2 Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/quantum-q-titano-h2",
+      "googleDriveUrl": "https://drive.google.com/file/d/1IgrTbQ_XiKb6Eu3VwNLzsY73Ekj8u1p0/view",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1IgrTbQ_XiKb6Eu3VwNLzsY73Ekj8u1p0&export=download&confirm=t",
+      "fileSize": "675 MB",
+      "date": "2023-07-22",
+      "firmwareVersion": "5.1",
+      "description": "Download the official Quantum Q-Titano H2 Stock Firmware ROM (Flash File) for your Quantum Mobile. We also provide all other Quantum Stock Firmware for free."
+    },
+    {
+      "brand": "Quantum",
+      "deviceName": "Quantum M QM83 Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/quantum-m-qm83",
+      "googleDriveUrl": "https://drive.google.com/file/d/1hHp1QEK9jdLJwTIGRp5EQE_NAYZcmaoV/view",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1hHp1QEK9jdLJwTIGRp5EQE_NAYZcmaoV&export=download&confirm=t",
+      "fileSize": "1.07 GB",
+      "date": "2023-07-22",
+      "firmwareVersion": "8.1.0",
+      "description": "Download the official Quantum M QM83 Stock Firmware ROM (Flash File) for your Quantum Mobile. We also provide all other Quantum Stock Firmware for free."
+    },
+    {
+      "brand": "Quantum",
+      "deviceName": "Quantum You L Q11 Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/quantum-you-l-q11",
+      "googleDriveUrl": "https://drive.google.com/file/d/1nX04-6WbW7pYs9vOgFSEgp5pCLWjU5Hm/view",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1nX04-6WbW7pYs9vOgFSEgp5pCLWjU5Hm&export=download&confirm=t",
+      "fileSize": "1022 MB",
+      "date": "2020-08-21",
+      "firmwareVersion": "",
+      "description": "Download the official Quantum You L Q11 Stock Firmware ROM (Flash File) for your Quantum Mobile. We also provide all other Quantum Stock Firmware for free."
+    },
+    {
+      "brand": "Quantum",
+      "deviceName": "Quantum Q17 You Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/quantum-q17-you",
+      "googleDriveUrl": "https://drive.google.com/file/d/1zcuVDIE3GHmCU4QktDfhBy07npgEjc2R/view",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1zcuVDIE3GHmCU4QktDfhBy07npgEjc2R&export=download&confirm=t",
+      "fileSize": "1 GB",
+      "date": "2020-08-21",
+      "firmwareVersion": "7.0",
+      "description": "Download the official Quantum Q17 You Stock Firmware ROM (Flash File) for your Quantum Mobile. We also provide all other Quantum Stock Firmware for free."
+    }
+  ]
+}

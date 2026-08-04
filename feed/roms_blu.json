@@ -411,17 +411,6 @@
     },
     {
       "brand": "BLU",
-      "deviceName": "Blu Studio J8M LTE S0450WW Stock Firmware ROM (Flash File)",
-      "deviceUrl": "https://firmwarefile.com/blu-studio-j8m-lte-s0450ww",
-      "googleDriveUrl": "https://drive.google.com/file/d/1uDmuuH2QrjNEphTG4Wl8OB6oOK_U9EUA/view",
-      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1uDmuuH2QrjNEphTG4Wl8OB6oOK_U9EUA&export=download&confirm=t",
-      "fileSize": "1.39 GB",
-      "date": "2022-01-10",
-      "firmwareVersion": "",
-      "description": "Download the official Blu Studio J8M LTE S0450WW Stock Firmware ROM (Flash File) for your Blu Mobile. We also provide all other Blu Stock Firmware for free."
-    },
-    {
-      "brand": "BLU",
       "deviceName": "Blu C5 2019 C110 Stock Firmware ROM (Flash File)",
       "deviceUrl": "https://firmwarefile.com/blu-c5-2019-c110",
       "googleDriveUrl": "https://drive.google.com/file/d/1bErjXaVDGfIUNA9vp_69VklxlUKen8Go/view",
@@ -430,6 +419,17 @@
       "date": "2022-01-10",
       "firmwareVersion": "8.1.0",
       "description": "Download the official Blu C5 2019 C110 Stock Firmware ROM (Flash File) for your Blu Mobile. We also provide all other Blu Stock Firmware for free."
+    },
+    {
+      "brand": "BLU",
+      "deviceName": "Blu Studio J8M LTE S0450WW Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/blu-studio-j8m-lte-s0450ww",
+      "googleDriveUrl": "https://drive.google.com/file/d/1uDmuuH2QrjNEphTG4Wl8OB6oOK_U9EUA/view",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1uDmuuH2QrjNEphTG4Wl8OB6oOK_U9EUA&export=download&confirm=t",
+      "fileSize": "1.39 GB",
+      "date": "2022-01-10",
+      "firmwareVersion": "",
+      "description": "Download the official Blu Studio J8M LTE S0450WW Stock Firmware ROM (Flash File) for your Blu Mobile. We also provide all other Blu Stock Firmware for free."
     },
     {
       "brand": "BLU",

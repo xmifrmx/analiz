@@ -3,10 +3,10 @@
   <channel>
     <atom:link href="firmwaredrive.com" rel="self" type="application/rss+xml"/>
     <generator>fetch_roms.js</generator>
-    <title>Sharp Firmware - Direct Downloads</title>
+    <title>Ruggear Firmware - Direct Downloads</title>
     <link>https://firmwaredrive.com</link>
-    <description>Direct download links for Sharp firmware files. Click any link to download directly without visiting the site.</description>
+    <description>Direct download links for Ruggear firmware files. Click any link to download directly without visiting the site.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 04 Aug 2026 23:44:52 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 04 Aug 2026 23:44:29 GMT</lastBuildDate>
   </channel>
 </rss>

@@ -7,7 +7,7 @@
     <link>https://firmwaredrive.com</link>
     <description>Direct download links for Honor firmware files. Click any link to download directly without visiting the site.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 03 Aug 2026 15:26:25 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 04 Aug 2026 23:41:10 GMT</lastBuildDate>
     <item>
       <title>Honor X9d MTN-NX1 Stock Firmware ROM (Flash File)</title>
       <link>https://drive.usercontent.google.com/download?id=1csQbR9y73Ox40sgBeWMEodDBhO9q5zPd&amp;export=download&amp;confirm=t</link>
@@ -689,6 +689,23 @@
       <enclosure url="https://drive.usercontent.google.com/download?id=1GTScS9SQ1WtiAkdsQyP08UDqL6tpI0Fz&amp;export=download&amp;confirm=t" type="application/zip" />
     </item>
     <item>
+      <title>Honor Pad X9 ELN-LX9 Stock Firmware ROM (Flash File)</title>
+      <link>https://drive.usercontent.google.com/download?id=1Vw4JrUPjWYz3hoJ9CCgSZ5vZybrOcYVf&amp;export=download&amp;confirm=t</link>
+      <guid isPermaLink="false">Honor-honor-pad-x9-eln-lx9</guid>
+      <pubDate>Wed, 25 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[
+        Device: Honor Pad X9 ELN-LX9 Stock Firmware ROM (Flash File)
+        <br/>Brand: Honor
+        <br/>Size: 3.56 GB
+        <br/>Date: 2026-03-25
+        <br/>Version: 7.1.0.112
+        <br/><a href="https://drive.usercontent.google.com/download?id=1Vw4JrUPjWYz3hoJ9CCgSZ5vZybrOcYVf&amp;export=download&amp;confirm=t">Direct Download (Google Drive)</a>
+        <br/><a href="https://drive.google.com/file/d/1Vw4JrUPjWYz3hoJ9CCgSZ5vZybrOcYVf/view?usp=sharing">Open in Google Drive</a>
+        <br/><a href="https://firmwarefile.com/honor-pad-x9-eln-lx9">Source Page</a>
+      ]]></description>
+      <enclosure url="https://drive.usercontent.google.com/download?id=1Vw4JrUPjWYz3hoJ9CCgSZ5vZybrOcYVf&amp;export=download&amp;confirm=t" type="application/zip" />
+    </item>
+    <item>
       <title>Honor Pad X9A ELN2-LX9 Stock Firmware ROM (Flash File)</title>
       <link>https://drive.usercontent.google.com/download?id=1FZytVJzBH7-KhXW_oftkI7_CtOUjRA57&amp;export=download&amp;confirm=t</link>
       <guid isPermaLink="false">Honor-honor-pad-x9a-eln2-lx9</guid>
@@ -823,23 +840,6 @@
         <br/><a href="https://firmwarefile.com/honor-x8c-abr-lx2">Source Page</a>
       ]]></description>
       <enclosure url="https://drive.usercontent.google.com/download?id=1-MhHSrLcFBhoRxbM_nOztQQ8I1px8XTM&amp;export=download&amp;confirm=t" type="application/zip" />
-    </item>
-    <item>
-      <title>Honor 90 5G REA-NX9 Stock Firmware ROM (Flash File)</title>
-      <link>https://drive.usercontent.google.com/download?id=1JSf8xmVQqztMjxX9zj5aXzuIAMALKwZI&amp;export=download&amp;confirm=t</link>
-      <guid isPermaLink="false">Honor-honor-90-5g-rea-nx9</guid>
-      <pubDate>Mon, 23 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[
-        Device: Honor 90 5G REA-NX9 Stock Firmware ROM (Flash File)
-        <br/>Brand: Honor
-        <br/>Size: 5.94 GB
-        <br/>Date: 2026-03-23
-        <br/>Version: 8.0.0.210
-        <br/><a href="https://drive.usercontent.google.com/download?id=1JSf8xmVQqztMjxX9zj5aXzuIAMALKwZI&amp;export=download&amp;confirm=t">Direct Download (Google Drive)</a>
-        <br/><a href="https://drive.google.com/file/d/1JSf8xmVQqztMjxX9zj5aXzuIAMALKwZI/view?usp=sharing">Open in Google Drive</a>
-        <br/><a href="https://firmwarefile.com/honor-90-5g-rea-nx9">Source Page</a>
-      ]]></description>
-      <enclosure url="https://drive.usercontent.google.com/download?id=1JSf8xmVQqztMjxX9zj5aXzuIAMALKwZI&amp;export=download&amp;confirm=t" type="application/zip" />
     </item>
   </channel>
 </rss>
