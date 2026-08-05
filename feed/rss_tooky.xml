@@ -3,10 +3,10 @@
   <channel>
     <atom:link href="firmwaredrive.com" rel="self" type="application/rss+xml"/>
     <generator>fetch_roms.js</generator>
-    <title>LG Firmware - Direct Downloads</title>
+    <title>Tooky Firmware - Direct Downloads</title>
     <link>https://firmwaredrive.com</link>
-    <description>Direct download links for LG firmware files. Click any link to download directly without visiting the site.</description>
+    <description>Direct download links for Tooky firmware files. Click any link to download directly without visiting the site.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 05 Aug 2026 17:17:22 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 05 Aug 2026 17:21:16 GMT</lastBuildDate>
   </channel>
 </rss>

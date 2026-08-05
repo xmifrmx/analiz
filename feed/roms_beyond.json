@@ -1,0 +1,61 @@
+{
+  "brand": "beyond",
+  "brandName": "Beyond",
+  "files": [
+    {
+      "brand": "Beyond",
+      "deviceName": "Beyond Curve 15 Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/beyond-curve-15",
+      "googleDriveUrl": "https://drive.google.com/file/d/1VgWQvM53XTLnpV7sDdd3E__RFEWRRbE-/view",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1VgWQvM53XTLnpV7sDdd3E__RFEWRRbE-&export=download&confirm=t",
+      "fileSize": "893 MB",
+      "date": "2023-09-25",
+      "firmwareVersion": "7.0",
+      "description": "Download the official Beyond Curve 15 Stock Firmware ROM (Flash File) for your Beyond Mobile. We also provide all other Beyond Stock Firmware for free."
+    },
+    {
+      "brand": "Beyond",
+      "deviceName": "Beyond BTab 1 Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/beyond-btab-1",
+      "googleDriveUrl": "https://drive.google.com/file/d/180MQfqshgULANpzYFC0rwNboz-osNWQV/view",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=180MQfqshgULANpzYFC0rwNboz-osNWQV&export=download&confirm=t",
+      "fileSize": "399 MB",
+      "date": "2023-09-25",
+      "firmwareVersion": "4.2.2",
+      "description": "Download the official Beyond BTab 1 Stock Firmware ROM (Flash File) for your Beyond Mobile. We also provide all other Beyond Stock Firmware for free."
+    },
+    {
+      "brand": "Beyond",
+      "deviceName": "Beyond Win 3 Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/beyond-win-3",
+      "googleDriveUrl": "https://drive.google.com/file/d/1i9CtJo_LZX84QZnAO-eDsl-uV9RrDIMv/view",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1i9CtJo_LZX84QZnAO-eDsl-uV9RrDIMv&export=download&confirm=t",
+      "fileSize": "587.5 MB",
+      "date": "2018-09-11",
+      "firmwareVersion": "5.1",
+      "description": "Download the official Beyond Win 3 Stock Firmware ROM (Flash File) for your Beyond Mobile. We also provide all other Beyond Stock Firmware."
+    },
+    {
+      "brand": "Beyond",
+      "deviceName": "Beyond WIN 2 Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/beyond-win-2",
+      "googleDriveUrl": "https://drive.google.com/file/d/1K3rvSoTaPVvsB7P65zDX4Dp6NcGDxRBb/view",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1K3rvSoTaPVvsB7P65zDX4Dp6NcGDxRBb&export=download&confirm=t",
+      "fileSize": "584.4 MB",
+      "date": "2018-09-11",
+      "firmwareVersion": "5.1",
+      "description": "Download the official Beyond WIN 2 Stock Firmware ROM (Flash File) for your Beyond Mobile. We also provide all other Beyond Stock Firmware."
+    },
+    {
+      "brand": "Beyond",
+      "deviceName": "Beyond WIN 1 Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/beyond-win-1",
+      "googleDriveUrl": "https://drive.google.com/file/d/1wggpaPzrQceE5MQI39oFTbvhSu-nLDmT/view",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1wggpaPzrQceE5MQI39oFTbvhSu-nLDmT&export=download&confirm=t",
+      "fileSize": "675.8 MB",
+      "date": "2018-09-10",
+      "firmwareVersion": "5.1",
+      "description": "Download the official Beyond WIN 1 Stock Firmware ROM (Flash File) for your Beyond Mobile. We also provide all other Beyond Stock Firmware."
+    }
+  ]
+}
