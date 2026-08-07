@@ -106,12 +106,12 @@ const BRANDS = {
     listSelector: "category",
     type: "naijarom-style",
   },
-  "general-mobile": {
-    name: "General Mobile",
-    site: "needrom.com (via Wayback Machine)",
-    listUrl: "https://web.archive.org/web/2024/https://www.needrom.com/category/others/e-f-g-h/brands-g/general-mobile/",
+  generalMobile: {
+    name: "General",
+    site: "naijarom.com",
+    listUrl: "https://naijarom.com/category/general-mobile",
     listSelector: "category",
-    type: "needrom-wayback-style",
+    type: "naijarom-style",
   },
 
   // ---------------------------------------------------------------------
