@@ -4,6 +4,17 @@
   "files": [
     {
       "brand": "Honor",
+      "deviceName": "Honor X9 MTN-N21 Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/honor-x9-mtn-n21",
+      "googleDriveUrl": "https://drive.google.com/file/d/1-h850vo2Hqyl95i0xZM3LDZaiYZagttF/view?usp=drive_link",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1-h850vo2Hqyl95i0xZM3LDZaiYZagttF&export=download&confirm=t",
+      "fileSize": "7.57 GB",
+      "date": "2026-08-07",
+      "firmwareVersion": "10.0.0.131",
+      "description": "Download the official Honor X9 MTN-N21 Stock Firmware ROM (Flash File) for your Honor Mobile. We also provide all other Honor Stock Firmware."
+    },
+    {
+      "brand": "Honor",
       "deviceName": "Honor X9d MTN-NX1 Stock Firmware ROM (Flash File)",
       "deviceUrl": "https://firmwarefile.com/honor-x9d-mtn-nx1",
       "googleDriveUrl": "https://drive.google.com/file/d/1csQbR9y73Ox40sgBeWMEodDBhO9q5zPd/view?usp=drive_link",
@@ -529,17 +540,6 @@
       "date": "2026-03-24",
       "firmwareVersion": "9.0.0.123",
       "description": "Download the official Honor X8C ABR-L33 Stock Firmware ROM (Flash File) for your Honor Mobile. We also provide all other Honor Stock Firmware for free."
-    },
-    {
-      "brand": "Honor",
-      "deviceName": "Honor X8C ABR-LX2 Stock Firmware ROM (Flash File)",
-      "deviceUrl": "https://firmwarefile.com/honor-x8c-abr-lx2",
-      "googleDriveUrl": "https://drive.google.com/file/d/1-MhHSrLcFBhoRxbM_nOztQQ8I1px8XTM/view?usp=sharing",
-      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1-MhHSrLcFBhoRxbM_nOztQQ8I1px8XTM&export=download&confirm=t",
-      "fileSize": "5.63 GB",
-      "date": "2026-03-24",
-      "firmwareVersion": "9.0.0.185",
-      "description": "Download the official Honor X8C ABR-LX2 Stock Firmware ROM (Flash File) for your Honor Mobile. We also provide all other Honor Stock Firmware for free."
     }
   ]
 }
