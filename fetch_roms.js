@@ -106,14 +106,13 @@ const BRANDS = {
     listSelector: "category",
     type: "naijarom-style",
   },
-  generalMobile: {
-    name: "General",
+  "general-mobile": {
+    name: "General Mobile",
     site: "naijarom.com",
     listUrl: "https://naijarom.com/category/general-mobile",
     listSelector: "category",
     type: "naijarom-style",
   },
-
   // ---------------------------------------------------------------------
   // Additional firmwarefile.com brands (same firmwarefile-style parser
   // as realme/infinix/oneplus/samsung/huawei/lenovo above).
