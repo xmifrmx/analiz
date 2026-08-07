@@ -1,4 +1,4 @@
-Name: Scrape Firmware & Update RSS
+name: Scrape Firmware & Update RSS
 
 on:
   schedule:
