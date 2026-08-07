@@ -1,4 +1,4 @@
-name: Scrape Firmware & Update RSS
+Name: Scrape Firmware & Update RSS
 
 on:
   schedule:
@@ -21,7 +21,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -32,6 +32,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Rebase/Pull işlemlerinin sorunsuz çalışması için tüm commit geçmişini çeker
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -100,6 +102,7 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Auto-update firmware RSS feeds ($(date -u '+%Y-%m-%d %H:%M UTC')) [${{ steps.chunk.outputs.label }}]"
+            git pull --rebase origin main
             git push
           fi
 
