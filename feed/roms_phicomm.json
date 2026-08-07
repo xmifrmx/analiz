@@ -1,0 +1,61 @@
+{
+  "brand": "phicomm",
+  "brandName": "Phicomm",
+  "files": [
+    {
+      "brand": "Phicomm",
+      "deviceName": "Phicomm i600 Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/phicomm-i600",
+      "googleDriveUrl": "https://drive.google.com/file/d/1YFXRNNRpKLAoUeOii3sqhEUkZW1ZqYiJ/view",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1YFXRNNRpKLAoUeOii3sqhEUkZW1ZqYiJ&export=download&confirm=t",
+      "fileSize": "201 MB",
+      "date": "2022-04-08",
+      "firmwareVersion": "4.1.2",
+      "description": "Download the official Phicomm i600 Stock Firmware ROM (Flash File) for your Phicomm Mobile. We also provide all other Phicomm Stock Firmware for free."
+    },
+    {
+      "brand": "Phicomm",
+      "deviceName": "Phicomm C730lW Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/phicomm-c730lw",
+      "googleDriveUrl": "https://drive.google.com/file/d/1Bg1vJa4K0yjdHzKKqBjYcSghgrlce5fd/view",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1Bg1vJa4K0yjdHzKKqBjYcSghgrlce5fd&export=download&confirm=t",
+      "fileSize": "771 MB",
+      "date": "2020-05-05",
+      "firmwareVersion": "",
+      "description": "Download the official Phicomm C730lW Stock Firmware ROM (Flash File) for your Phicomm Mobile. We also provide all other Phicomm Stock Firmware for free."
+    },
+    {
+      "brand": "Phicomm",
+      "deviceName": "Phicomm X130W Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/phicomm-x130w",
+      "googleDriveUrl": "https://drive.google.com/file/d/1T4Ygh7yu-tkRDtfhS_x5SPfpBAjzXd6n/view",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1T4Ygh7yu-tkRDtfhS_x5SPfpBAjzXd6n&export=download&confirm=t",
+      "fileSize": "318 MB",
+      "date": "2017-07-07",
+      "firmwareVersion": "4.1.2",
+      "description": "Download the official Phicomm X130W Stock Firmware ROM (Flash File) for your Phicomm Mobile. We also provide all other Phicomm Stock Firmware."
+    },
+    {
+      "brand": "Phicomm",
+      "deviceName": "Phicomm X130V Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/phicomm-x130v",
+      "googleDriveUrl": "https://drive.google.com/file/d/13nQ89FIADEPEEr9CsuvoDDESSlFmCbvF/view",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=13nQ89FIADEPEEr9CsuvoDDESSlFmCbvF&export=download&confirm=t",
+      "fileSize": "301 MB",
+      "date": "2017-07-07",
+      "firmwareVersion": "4.1.2",
+      "description": "Download the official Phicomm X130V Stock Firmware ROM (Flash File) for your Phicomm Mobile. We also provide all other Phicomm Stock Firmware."
+    },
+    {
+      "brand": "Phicomm",
+      "deviceName": "Phicomm P660 Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/phicomm-p660",
+      "googleDriveUrl": "https://drive.google.com/file/d/1RXICtcL05gfxQMWsYKJkZNbCPvRDzz1J/view",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1RXICtcL05gfxQMWsYKJkZNbCPvRDzz1J&export=download&confirm=t",
+      "fileSize": "506 MB",
+      "date": "2017-07-07",
+      "firmwareVersion": "4.4.4",
+      "description": "Download the official Phicomm P660 Stock Firmware ROM (Flash File) for your Phicomm Mobile. We also provide all other Phicomm Stock Firmware."
+    }
+  ]
+}

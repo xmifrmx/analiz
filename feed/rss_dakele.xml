@@ -3,10 +3,10 @@
   <channel>
     <atom:link href="firmwaredrive.com" rel="self" type="application/rss+xml"/>
     <generator>fetch_roms.js</generator>
-    <title>Google Firmware - Direct Downloads</title>
+    <title>Dakele Firmware - Direct Downloads</title>
     <link>https://firmwaredrive.com</link>
-    <description>Direct download links for Google firmware files. Click any link to download directly without visiting the site.</description>
+    <description>Direct download links for Dakele firmware files. Click any link to download directly without visiting the site.</description>
     <language>en</language>
-    <lastBuildDate>Fri, 07 Aug 2026 12:32:24 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 07 Aug 2026 12:31:16 GMT</lastBuildDate>
   </channel>
 </rss>

@@ -4,6 +4,39 @@
   "files": [
     {
       "brand": "Samsung",
+      "deviceName": "Samsung SM-F9710 Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/samsung-sm-f9710",
+      "googleDriveUrl": "https://drive.google.com/file/d/1mRXmMaJiPzykKphzG_xK69zdlLzyZ2CL/view?usp=drive_link",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1mRXmMaJiPzykKphzG_xK69zdlLzyZ2CL&export=download&confirm=t",
+      "fileSize": "18.55 GB",
+      "date": "2026-08-04",
+      "firmwareVersion": "",
+      "description": "Download the official Samsung SM-F9710 Stock Firmware ROM (Flash File) for your Samsung Mobile. We also provide all other Samsung Stock Firmware for free."
+    },
+    {
+      "brand": "Samsung",
+      "deviceName": "Samsung SM-F971W Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/samsung-sm-f971w",
+      "googleDriveUrl": "https://drive.google.com/file/d/1jBXCQboVY_PJ3QdRJ88KKtoZcRf3azzw/view?usp=drive_link",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1jBXCQboVY_PJ3QdRJ88KKtoZcRf3azzw&export=download&confirm=t",
+      "fileSize": "17.05 GB",
+      "date": "2026-08-04",
+      "firmwareVersion": "",
+      "description": "Download the official Samsung SM-F971W Stock Firmware ROM (Flash File) for your Samsung Mobile. We also provide all other Samsung Stock Firmware for free."
+    },
+    {
+      "brand": "Samsung",
+      "deviceName": "Samsung SM-F971U Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/samsung-sm-f971u",
+      "googleDriveUrl": "https://drive.google.com/file/d/1Ryv6kNuK52HHR-WhriBQZUWtU0Rnd5BZ/view?usp=drive_link",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1Ryv6kNuK52HHR-WhriBQZUWtU0Rnd5BZ&export=download&confirm=t",
+      "fileSize": "17.07 GB",
+      "date": "2026-08-04",
+      "firmwareVersion": "",
+      "description": "Download the official Samsung SM-F971U Stock Firmware ROM (Flash File) for your Samsung Mobile. We also provide all other Samsung Stock Firmware for free."
+    },
+    {
+      "brand": "Samsung",
       "deviceName": "Samsung SM-X936B Stock Firmware ROM (Flash File)",
       "deviceUrl": "https://firmwarefile.com/samsung-sm-x936b",
       "googleDriveUrl": "https://drive.google.com/file/d/15bn9W6xZHQ7dDzq2wffcrECAyykqdiVr/view?usp=drive_link",
@@ -444,6 +477,17 @@
     },
     {
       "brand": "Samsung",
+      "deviceName": "Samsung SM-M366K Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/samsung-sm-m366k",
+      "googleDriveUrl": "https://drive.google.com/file/d/1qerrUQhgxKiQ_PlRFNAFlZISH7pA6GrB/view?usp=sharing",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1qerrUQhgxKiQ_PlRFNAFlZISH7pA6GrB&export=download&confirm=t",
+      "fileSize": "7.84 GB",
+      "date": "2026-06-03",
+      "firmwareVersion": "",
+      "description": "Download the official Samsung SM-M366K Stock Firmware ROM (Flash File) for your Samsung Mobile. We also provide all other Samsung Stock Firmware for free."
+    },
+    {
+      "brand": "Samsung",
       "deviceName": "Samsung SM-L3150 Stock Firmware ROM (Flash File)",
       "deviceUrl": "https://firmwarefile.com/samsung-sm-l3150",
       "googleDriveUrl": "https://drive.google.com/file/d/1VBzanEtLfSKiGzCsR4D93K7txgd7fOKe/view?usp=sharing",
@@ -496,50 +540,6 @@
       "date": "2026-05-26",
       "firmwareVersion": "",
       "description": "Download the official Samsung SM-S156V Stock Firmware ROM (Flash File) for your Samsung Mobile. We also provide all other Samsung Stock Firmware for free."
-    },
-    {
-      "brand": "Samsung",
-      "deviceName": "Samsung SM-S156V Stock Firmware ROM (Flash File)",
-      "deviceUrl": "https://firmwarefile.com/samsung-sm-s156v",
-      "googleDriveUrl": "https://drive.google.com/file/d/1BqjAFyfKgciSESyU_Zk-AEtgnPENDz0p/view?usp=sharing",
-      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1BqjAFyfKgciSESyU_Zk-AEtgnPENDz0p&export=download&confirm=t",
-      "fileSize": "6.46 GB",
-      "date": "2026-05-23",
-      "firmwareVersion": "",
-      "description": "Download the official Samsung SM-S156V Stock Firmware ROM (Flash File) for your Samsung Mobile. We also provide all other Samsung Stock Firmware for free."
-    },
-    {
-      "brand": "Samsung",
-      "deviceName": "Samsung SM-S948C Stock Firmware ROM (Flash File)",
-      "deviceUrl": "https://firmwarefile.com/samsung-sm-s948c",
-      "googleDriveUrl": "https://drive.google.com/file/d/1DlNiFIlKLCMqZfE7bawbCfwZnSECPEaQ/view?usp=sharing",
-      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1DlNiFIlKLCMqZfE7bawbCfwZnSECPEaQ&export=download&confirm=t",
-      "fileSize": "17.48 GB",
-      "date": "2026-05-23",
-      "firmwareVersion": "",
-      "description": "Download the official Samsung SM-S948C Stock Firmware ROM (Flash File) for your Samsung Mobile. We also provide all other Samsung Stock Firmware for free."
-    },
-    {
-      "brand": "Samsung",
-      "deviceName": "Samsung SM-T837A Stock Firmware ROM (Flash File)",
-      "deviceUrl": "https://firmwarefile.com/samsung-sm-t837a",
-      "googleDriveUrl": "https://drive.google.com/file/d/12Z15qo9YoOqXHbNE7v9GTLVWUKXDkS6n/view?usp=sharing",
-      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=12Z15qo9YoOqXHbNE7v9GTLVWUKXDkS6n&export=download&confirm=t",
-      "fileSize": "3.61 GB",
-      "date": "2026-05-23",
-      "firmwareVersion": "",
-      "description": "Download the official Samsung SM-T837A Stock Firmware ROM (Flash File) for your Samsung Mobile. We also provide all other Samsung Stock Firmware for free."
-    },
-    {
-      "brand": "Samsung",
-      "deviceName": "Samsung SM-X236C Stock Firmware ROM (Flash File)",
-      "deviceUrl": "https://firmwarefile.com/samsung-sm-x236c",
-      "googleDriveUrl": "https://drive.google.com/file/d/1Jz2siHNx7hQTOQI79y7X-8aUJf9kC3Lv/view?usp=sharing",
-      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1Jz2siHNx7hQTOQI79y7X-8aUJf9kC3Lv&export=download&confirm=t",
-      "fileSize": "7.76 GB",
-      "date": "2026-05-23",
-      "firmwareVersion": "",
-      "description": "Download the official Samsung SM-X236C Stock Firmware ROM (Flash File) for your Samsung Mobile. We also provide all other Samsung Stock Firmware for free."
     }
   ]
 }
