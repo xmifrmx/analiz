@@ -1,0 +1,28 @@
+{
+  "brand": "x-view",
+  "brandName": "X-View",
+  "files": [
+    {
+      "brand": "X-View",
+      "deviceName": "X-View Zen U5 Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/x-view-zen-u5",
+      "googleDriveUrl": "https://drive.google.com/file/d/1fHhov5DZkCwsPOLyb47DsifjBqKwo_8k/view",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1fHhov5DZkCwsPOLyb47DsifjBqKwo_8k&export=download&confirm=t",
+      "fileSize": "898 MB",
+      "date": "2022-06-06",
+      "firmwareVersion": "5.1",
+      "description": "Download the official X-View Zen U5 Stock Firmware ROM (Flash File) for your X-View Mobile. We also provide all other X-View Stock Firmware for free."
+    },
+    {
+      "brand": "X-View",
+      "deviceName": "X-View Proton Amber LT 7 Stock Firmware ROM (Flash File)",
+      "deviceUrl": "https://firmwarefile.com/x-view-proton-amber-lt-7",
+      "googleDriveUrl": "https://drive.google.com/file/d/1sCW44LdtR979kGt8iJEy07Jgc-srmkFz/view",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1sCW44LdtR979kGt8iJEy07Jgc-srmkFz&export=download&confirm=t",
+      "fileSize": "680 MB",
+      "date": "2022-06-06",
+      "firmwareVersion": "6.0.1",
+      "description": "Download the official X-View Proton Amber LT 7 Stock Firmware ROM (Flash File) for your X-View Mobile. We also provide all other X-View Stock Firmware for free."
+    }
+  ]
+}

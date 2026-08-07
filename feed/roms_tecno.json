@@ -4,6 +4,17 @@
   "files": [
     {
       "brand": "Tecno",
+      "deviceName": "Tecno Megapad SE 2 T1002 Stock ROM Firmware (Flash File)",
+      "deviceUrl": "https://naijarom.com/tecno-megapad-se-2-t1002",
+      "googleDriveUrl": "https://drive.google.com/file/d/1EeDFoXebl3KzlT-qZmRN7rtoiwBXxZj6/view?usp=sharing",
+      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1EeDFoXebl3KzlT-qZmRN7rtoiwBXxZj6&export=download&confirm=t",
+      "fileSize": "6.35 GB",
+      "date": "2026-08-05",
+      "firmwareVersion": "16.3.0.125SP02",
+      "description": "Download Tecno Megapad 2 T1103 Stock ROM Firmware (Flash File) without any password for Free. We also provide Stock ROM for other Tecno devices."
+    },
+    {
+      "brand": "Tecno",
       "deviceName": "Tecno Megapad 2 T1103 Stock ROM Firmware (Flash File)",
       "deviceUrl": "https://naijarom.com/tecno-megapad-2-t1103",
       "googleDriveUrl": "https://drive.google.com/file/d/1rGZIawpUImDWSv4Y81lPZRXyZttRTmXo/view?usp=sharing",
@@ -496,17 +507,6 @@
       "date": "2025-06-23",
       "firmwareVersion": "",
       "description": "Download Tecno Pop 2X Plus RB8S Stock ROM Firmware (Flash File) without any password for Free. We also provide Stock ROM for other Tecno devices."
-    },
-    {
-      "brand": "Tecno",
-      "deviceName": "Tecno Pova 7 5G LJ7 Stock ROM Firmware (Flash File)",
-      "deviceUrl": "https://naijarom.com/tecno-pova-7-5g-lj7",
-      "googleDriveUrl": "https://drive.google.com/file/d/1AARHSX2A9QN19Va9pdotHXf-zWS50W9B/view?usp=sharing",
-      "directDownloadUrl": "https://drive.usercontent.google.com/download?id=1AARHSX2A9QN19Va9pdotHXf-zWS50W9B&export=download&confirm=t",
-      "fileSize": "7.32 GB",
-      "date": "2025-06-23",
-      "firmwareVersion": "15.1.0.112SP01",
-      "description": "Download Tecno Pova 7 5G LJ7 Stock ROM Firmware (Flash File) without any password for Free. We also provide Stock ROM for other Tecno devices."
     }
   ]
 }
