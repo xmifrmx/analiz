@@ -548,6 +548,7 @@ function parseDevicePage(html, deviceUrl) {
     name: "",
     googleDriveUrl: "",
     directDownloadUrl: "",
+    linkSource: "", // "googledrive" | "mega" | ""
     fileSize: "",
     date: "",
     firmwareVersion: "",
@@ -570,6 +571,22 @@ function parseDevicePage(html, deviceUrl) {
   if (gdriveMatch) {
     result.googleDriveUrl = gdriveMatch[0];
     result.directDownloadUrl = buildGDriveDirectUrl(gdriveMatch[0]);
+    result.linkSource = "googledrive";
+  } else {
+    // Some categories (e.g. naijarom.com's "Tools" section) host their
+    // files on Mega.nz instead of Google Drive. Mega links are end-to-end
+    // encrypted (the decryption key lives in the URL fragment after "#"),
+    // so — unlike Google Drive's uc?export=download trick — there is no
+    // way to turn this into a raw direct-HTTP-download URL. The mega.nz
+    // share link itself *is* the correct, working download link (opens
+    // Mega's downloader, which decrypts client-side), so we use it as-is.
+    const megaMatch = html.match(
+      /https?:\/\/mega\.nz\/(?:file\/[^"'\s<>]+|#![^"'\s<>]+)/
+    );
+    if (megaMatch) {
+      result.directDownloadUrl = megaMatch[0];
+      result.linkSource = "mega";
+    }
   }
 
   // Extract file size - look for patterns like "3.82 GB" or "927.10 MB" near "size" label
@@ -731,6 +748,7 @@ async function scrapeBrand(brandKey, maxDepth) {
             deviceUrl: device.url,
             googleDriveUrl: info.googleDriveUrl,
             directDownloadUrl: info.directDownloadUrl,
+            linkSource: info.linkSource || "googledrive",
             fileSize: info.fileSize || "Unknown",
             date: info.date || "Unknown",
             firmwareVersion: info.firmwareVersion || "",
@@ -745,6 +763,7 @@ async function scrapeBrand(brandKey, maxDepth) {
             deviceUrl: device.url,
             googleDriveUrl: "",
             directDownloadUrl: device.url,
+            linkSource: "needrom-login",
             fileSize: info.fileSize || "Unknown",
             date: info.date || "Unknown",
             firmwareVersion: info.firmwareVersion || "",
@@ -787,6 +806,11 @@ function generateRss(brandName, files) {
     const pubDate =
       f.date && f.date !== "Unknown" ? new Date(f.date).toUTCString() : now;
 
+    const mirrorLabel =
+      f.linkSource === "mega" ? "Mega.nz" :
+      f.linkSource === "needrom-login" ? "needrom.com (login required)" :
+      "Google Drive";
+
     items += `    <item>
       <title>${escapeXml(f.deviceName)}</title>
       <link>${escapeXml(f.directDownloadUrl)}</link>
@@ -798,7 +822,7 @@ function generateRss(brandName, files) {
         <br/>Size: ${escapeXml(f.fileSize)}
         <br/>Date: ${escapeXml(f.date)}
         ${f.firmwareVersion ? "<br/>Version: " + escapeXml(f.firmwareVersion) : ""}
-        <br/><a href="${escapeXml(f.directDownloadUrl)}">Direct Download (Google Drive)</a>
+        <br/><a href="${escapeXml(f.directDownloadUrl)}">Direct Download (${escapeXml(mirrorLabel)})</a>
         ${f.googleDriveUrl ? `<br/><a href="${escapeXml(f.googleDriveUrl)}">Open in Google Drive</a>` : ""}
         <br/><a href="${escapeXml(f.deviceUrl)}">Source Page</a>
       ]]></description>
