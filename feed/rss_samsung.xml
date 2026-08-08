@@ -7,7 +7,7 @@
     <link>https://firmwaredrive.com</link>
     <description>Direct download links for Samsung firmware files. Click any link to download directly without visiting the site.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 08 Aug 2026 11:45:11 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 08 Aug 2026 14:06:33 GMT</lastBuildDate>
     <item>
       <title>Samsung SM-A175F Stock Firmware ROM (Flash File)</title>
       <link>https://drive.usercontent.google.com/download?id=1EbDX13yLlIx-pw2AV6Q3TyrOskw6Sshb&amp;export=download&amp;confirm=t</link>
@@ -689,6 +689,23 @@
       <enclosure url="https://drive.usercontent.google.com/download?id=1oYQkksauyM9CTsa8qpaNFgXhmu4uPSCg&amp;export=download&amp;confirm=t" type="application/zip" />
     </item>
     <item>
+      <title>Samsung SM-A376W Stock Firmware ROM (Flash File)</title>
+      <link>https://drive.usercontent.google.com/download?id=1yP1ynSdwHPsPmNh1DM4OrkGEC8iY0knO&amp;export=download&amp;confirm=t</link>
+      <guid isPermaLink="false">Samsung-samsung-sm-a376w</guid>
+      <pubDate>Thu, 11 Jun 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[
+        Device: Samsung SM-A376W Stock Firmware ROM (Flash File)
+        <br/>Brand: Samsung
+        <br/>Size: 8.46 GB
+        <br/>Date: 2026-06-11
+        
+        <br/><a href="https://drive.usercontent.google.com/download?id=1yP1ynSdwHPsPmNh1DM4OrkGEC8iY0knO&amp;export=download&amp;confirm=t">Direct Download (Google Drive)</a>
+        <br/><a href="https://drive.google.com/file/d/1yP1ynSdwHPsPmNh1DM4OrkGEC8iY0knO/view?usp=sharing">Open in Google Drive</a>
+        <br/><a href="https://firmwarefile.com/samsung-sm-a376w">Source Page</a>
+      ]]></description>
+      <enclosure url="https://drive.usercontent.google.com/download?id=1yP1ynSdwHPsPmNh1DM4OrkGEC8iY0knO&amp;export=download&amp;confirm=t" type="application/zip" />
+    </item>
+    <item>
       <title>Samsung SM-X238U Stock Firmware ROM (Flash File)</title>
       <link>https://drive.usercontent.google.com/download?id=1VLbIEdL8STInpmVF6t-91ySVXZoZjsu4&amp;export=download&amp;confirm=t</link>
       <guid isPermaLink="false">Samsung-samsung-sm-x238u</guid>
@@ -823,23 +840,6 @@
         <br/><a href="https://firmwarefile.com/samsung-sm-l315n">Source Page</a>
       ]]></description>
       <enclosure url="https://drive.usercontent.google.com/download?id=16UYkTvEd2pDjnk59IePN77Mh_ymT3Qnw&amp;export=download&amp;confirm=t" type="application/zip" />
-    </item>
-    <item>
-      <title>Samsung SM-L325N Stock Firmware ROM (Flash File)</title>
-      <link>https://drive.usercontent.google.com/download?id=1qu5ZI5BQOI_yZxjaUEO-oh-vrWS3ozh_&amp;export=download&amp;confirm=t</link>
-      <guid isPermaLink="false">Samsung-samsung-sm-l325n</guid>
-      <pubDate>Tue, 26 May 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[
-        Device: Samsung SM-L325N Stock Firmware ROM (Flash File)
-        <br/>Brand: Samsung
-        <br/>Size: 3.73 GB
-        <br/>Date: 2026-05-26
-        
-        <br/><a href="https://drive.usercontent.google.com/download?id=1qu5ZI5BQOI_yZxjaUEO-oh-vrWS3ozh_&amp;export=download&amp;confirm=t">Direct Download (Google Drive)</a>
-        <br/><a href="https://drive.google.com/file/d/1qu5ZI5BQOI_yZxjaUEO-oh-vrWS3ozh_/view?usp=sharing">Open in Google Drive</a>
-        <br/><a href="https://firmwarefile.com/samsung-sm-l325n">Source Page</a>
-      ]]></description>
-      <enclosure url="https://drive.usercontent.google.com/download?id=1qu5ZI5BQOI_yZxjaUEO-oh-vrWS3ozh_&amp;export=download&amp;confirm=t" type="application/zip" />
     </item>
   </channel>
 </rss>
