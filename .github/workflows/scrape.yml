@@ -2,16 +2,16 @@ name: Scrape Firmware & Update RSS
 
 on:
   schedule:
-    # Runs every 2 hours (12x/day). Each run automatically scrapes the next
-    # "chunk" of brands (see "Determine brand chunk" step below), so the
-    # full brand list rotates through over a 24h period instead of trying
-    # to scrape everything (300+ brands) in a single 30-min job, which is
-    # what was causing the run to get cancelled for timing out.
+    # Runs every 2 hours (12x/day). BRANDS is now a small, curated list (25
+    # brands, kept in sync with https://immaculate.eu.cc/tr/markalar) instead
+    # of the previous 300+ firmwarefile.com categories, so every run scrapes
+    # the full brand list in one go — no more chunking/rotation needed, and
+    # no more timeouts.
     - cron: "0 */2 * * *"
   workflow_dispatch: # Allow manual trigger
     inputs:
-      chunk:
-        description: "Chunk index (0-11) to scrape, 'all' to scrape every brand in one run, or leave blank to auto-pick based on current time (same as schedule)"
+      brands:
+        description: "Space-separated brand keys to scrape (e.g. 'oppo vivo'), or leave blank to scrape all brands"
         required: false
         type: string
 
@@ -46,51 +46,11 @@ jobs:
             git mv feeds feed
           fi
 
-      - name: Determine brand chunk for this run
-        id: chunk
-        env:
-          CHUNK_INPUT: ${{ github.event.inputs.chunk }}
-        run: |
-          node <<'EOF' >> "$GITHUB_OUTPUT"
-          const fs = require("fs");
-
-          // Read the brand list straight out of fetch_roms.js so this stays
-          // in sync automatically if brands are ever added/removed there.
-          // fetch_roms.js itself is never modified by this step.
-          const src = fs.readFileSync("fetch_roms.js", "utf8");
-          const block = src.match(/const BRANDS = \{[\s\S]*?\n\};/)[0];
-          const keys = [...block.matchAll(/^\s{2}["']?([a-z0-9-]+)["']?:\s*\{/gm)].map(m => m[1]);
-
-          const CHUNK_COUNT = 12; // matches the every-2-hours cron (24 / 2 = 12)
-          const chunks = Array.from({ length: CHUNK_COUNT }, () => []);
-          keys.forEach((k, i) => chunks[i % CHUNK_COUNT].push(k));
-
-          const manual = (process.env.CHUNK_INPUT || "").trim();
-          let brandsArg = "";
-          let label = "";
-
-          if (manual.toLowerCase() === "all") {
-            brandsArg = ""; // no brand args = fetch_roms.js scrapes every brand
-            label = "all brands (manual)";
-          } else if (manual !== "" && !isNaN(parseInt(manual, 10))) {
-            const idx = ((parseInt(manual, 10) % CHUNK_COUNT) + CHUNK_COUNT) % CHUNK_COUNT;
-            brandsArg = chunks[idx].join(" ");
-            label = `chunk ${idx}/${CHUNK_COUNT - 1} (manual, ${chunks[idx].length} brands)`;
-          } else {
-            const hour = new Date().getUTCHours();
-            const idx = Math.floor(hour / (24 / CHUNK_COUNT)) % CHUNK_COUNT;
-            brandsArg = chunks[idx].join(" ");
-            label = `chunk ${idx}/${CHUNK_COUNT - 1} (auto, hour=${hour} UTC, ${chunks[idx].length} brands)`;
-          }
-
-          console.log(`brands=${brandsArg}`);
-          console.log(`label=${label}`);
-          EOF
-
       - name: Run scraper
         run: |
-          echo "Scraping: ${{ steps.chunk.outputs.label }}"
-          node fetch_roms.js ${{ steps.chunk.outputs.brands }} --depth 50 --out-dir ./feed
+          BRANDS_INPUT="${{ github.event.inputs.brands }}"
+          echo "Scraping: ${BRANDS_INPUT:-all curated brands}"
+          node fetch_roms.js ${BRANDS_INPUT} --depth 50 --out-dir ./feed
 
       - name: Commit & push changes
         run: |
@@ -101,7 +61,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Auto-update firmware RSS feeds ($(date -u '+%Y-%m-%d %H:%M UTC')) [${{ steps.chunk.outputs.label }}]"
+            git commit -m "Auto-update firmware RSS feeds ($(date -u '+%Y-%m-%d %H:%M UTC'))"
             git pull --rebase origin main
             git push
           fi
